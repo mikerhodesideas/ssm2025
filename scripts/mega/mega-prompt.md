@@ -8,13 +8,13 @@ You are allowed to ask the user clarifying questions, but only BEFORE you start 
 
 ## Input Variables
 The script will work with the following input variables:
-1. Resource URL: This is optional. You can ask the user to provide one - remind them it's optional. 
+1. Resource URL: This is optional. You can ask the user to provide one - remind them it's optional. Only ask if it's not clear from the initial request which resource to use. You may search Google Ads Docs for the resource you need.
 
 
 ## Guidelines
 The Google Ads script must adhere to these guidelines:
 
-1. Use GAQL (Google Ads Query Language) instead of the old AWQL
+1. Use GAQL (Google Ads Query Language) instead of the old AWQL. Do NOT use old resources like KEYWORDS_REPORT, SEARCH_TERMS_REPORT, etc.
 2. Write concise and robust code
 3. Use 'let' or 'const' for variable declarations, never 'var'
 4. Use new lowercase resources (e.g., 'keywords' instead of 'KEYWORDS_REPORT')
