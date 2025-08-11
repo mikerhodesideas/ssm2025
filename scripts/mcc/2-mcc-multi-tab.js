@@ -1,3 +1,4 @@
+// scripts/2-mcc-multi-tab.js
 // --- CONFIGURATION ---
 
 // 1. SPREADSHEET URL (Optional)
@@ -33,17 +34,17 @@ function getAccountSpend(timePeriod) {
     FROM customer
     WHERE segments.date DURING ${timePeriod}
   `;
-  
+
   try {
     const report = AdsApp.report(query);
     const rows = report.rows();
     let totalSpend = 0;
-    
+
     while (rows.hasNext()) {
       const row = rows.next();
       totalSpend += parseFloat(row["metrics.cost_micros"]) / 1000000; // Convert micros to currency
     }
-    
+
     return totalSpend;
   } catch (e) {
     Logger.log(`Error getting spend: ${e.message}`);
@@ -55,7 +56,7 @@ function main() {
   Logger.log(`Starting script for time period: ${SELECTED_TIME_PERIOD}`);
   Logger.log(`Spending threshold: ${thresholdSpend}`);
   Logger.log(`Tab naming: ${useAccountName ? 'Account Name' : 'CID'}`);
-  
+
   if (SINGLE_CID_FOR_TESTING) {
     Logger.log(`Running in test mode for CID: ${SINGLE_CID_FOR_TESTING}`);
   } else {
@@ -63,23 +64,23 @@ function main() {
   }
 
   const spreadsheet = getSpreadsheet();
-  
+
   // Clear all existing sheets except the first one
   const sheets = spreadsheet.getSheets();
   for (let i = sheets.length - 1; i > 0; i--) {
     spreadsheet.deleteSheet(sheets[i]);
   }
-  
+
   // Create or clear the Index tab
   let indexSheet = spreadsheet.getSheets()[0];
   indexSheet.setName('Index');
   indexSheet.clear();
-  
+
   // Add headers to index sheet
   const indexHeaders = ["Account ID (CID)", "Account Name", "Spend", "Link"];
   indexSheet.appendRow(indexHeaders);
   indexSheet.getRange(1, 1, 1, indexHeaders.length).setFontWeight("bold");
-  
+
   const accountsData = []; // Store account info for index
   const qualifyingAccounts = []; // Accounts that meet spend threshold
 
@@ -87,8 +88,8 @@ function main() {
   if (SINGLE_CID_FOR_TESTING) {
     accountIterator = AdsManagerApp.accounts().withIds([SINGLE_CID_FOR_TESTING]).get();
     if (!accountIterator.hasNext()) {
-        Logger.log(`Error: Test CID ${SINGLE_CID_FOR_TESTING} not found or not accessible.`);
-        return;
+      Logger.log(`Error: Test CID ${SINGLE_CID_FOR_TESTING} not found or not accessible.`);
+      return;
     }
   } else {
     accountIterator = AdsManagerApp.accounts().get();
@@ -101,12 +102,12 @@ function main() {
 
     const accountName = account.getName() || "N/A";
     const accountId = account.getCustomerId();
-    
+
     // Get spend for the account
     const spend = getAccountSpend(SELECTED_TIME_PERIOD);
-    
+
     Logger.log(`Account: ${accountName} (${accountId}) - Spend: ${spend}`);
-    
+
     if (spend > thresholdSpend) {
       qualifyingAccounts.push({
         accountId: accountId,
@@ -115,33 +116,33 @@ function main() {
       });
     }
   }
-  
+
   // Sort accounts by spend (descending)
   qualifyingAccounts.sort((a, b) => b.spend - a.spend);
-  
+
   // Process qualifying accounts and create tabs
   qualifyingAccounts.forEach((accountInfo, index) => {
     const { accountId, accountName, spend } = accountInfo;
-    
+
     // Switch to account context
     const accountIterator = AdsManagerApp.accounts().withIds([accountId]).get();
     if (accountIterator.hasNext()) {
       const account = accountIterator.next();
       AdsManagerApp.select(account);
-      
+
       // Determine tab name
-      const tabName = useAccountName ? 
+      const tabName = useAccountName ?
         accountName.substring(0, 50) : // Limit name length for tabs
         accountId;
-      
+
       // Create tab for this account
       const accountSheet = spreadsheet.insertSheet(tabName);
-      
+
       // Add headers
       const headers = ["Date", "Conversion Action Name", "Conversions"];
       accountSheet.appendRow(headers);
       accountSheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
-      
+
       // Get conversion data
       try {
         const reportData = getConversionDataForAccount(accountId, accountName);
@@ -156,16 +157,16 @@ function main() {
         Logger.log(`Error processing account ${accountName} (${accountId}): ${e.message}`);
         accountSheet.appendRow(["Error loading data", e.message, ""]);
       }
-      
+
       // Auto-resize columns to fit content
       accountSheet.autoResizeColumns(1, 3);
-      
+
       // Delete any extra columns (keep only the 3 we need)
       const lastColumn = accountSheet.getMaxColumns();
       if (lastColumn > 3) {
         accountSheet.deleteColumns(4, lastColumn - 3);
       }
-      
+
       // Add to index with hyperlink
       const sheetUrl = `#gid=${accountSheet.getSheetId()}`;
       accountsData.push([
@@ -176,7 +177,7 @@ function main() {
       ]);
     }
   });
-  
+
   // Write index data
   if (accountsData.length > 0) {
     indexSheet.getRange(2, 1, accountsData.length, accountsData[0].length).setValues(accountsData);
@@ -184,10 +185,10 @@ function main() {
   } else {
     indexSheet.appendRow(["No accounts found with spend > " + thresholdSpend, "", "", ""]);
   }
-  
+
   // Format the index sheet
   indexSheet.autoResizeColumns(1, 4);
-  
+
   Logger.log(`Script finished. Data written to: ${spreadsheet.getUrl()}`);
   Logger.log(`Created ${accountsData.length} account tabs with spend > ${thresholdSpend}`);
 }
@@ -225,7 +226,7 @@ function getConversionDataForAccount(accountId, accountName) {
     ]);
   }
   if (accountData.length === 0) {
-      Logger.log(`  No conversion data found for ${accountName} (${accountId}) in the period.`);
+    Logger.log(`  No conversion data found for ${accountName} (${accountId}) in the period.`);
   }
   return accountData;
 }

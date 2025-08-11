@@ -2,48 +2,42 @@
 
 A collection of Google Ads Scripts for advanced automation and reporting.
 
-## Scripts
+## Script Folders
 
-### 1. MCC Multi-Tab Report (`scripts/mcc-multi-tab.js`)
-Creates a comprehensive Google Sheet with individual tabs for each account in your MCC, showing conversion data.
+### `/mcc/` - MCC Account Management Scripts
+Scripts designed to work with Manager (MCC) accounts, automatically handling multiple child accounts:
 
-**Features:**
-- Filters accounts by spending threshold
-- Creates an index tab with links to all account tabs
-- Customizable tab naming (CID or Account Name)
-- Auto-resizes columns for better readability
+- **`1-mcc-simple.js`** - Basic conversion data export across all accounts
+- **`2-mcc-multi-tab.js`** - Creates separate tabs for each account in a master sheet  
+- **`3-mcc-sheet.js`** - Advanced MCC reporting with account selection and individual spreadsheet creation
 
-**Configuration:**
-```javascript
-const thresholdSpend = 0; // Minimum spend to include account
-const useAccountName = false; // true: use account names, false: use CIDs
-```
+All MCC scripts automatically detect single vs MCC accounts and adapt accordingly.
 
-### 2. Script Health Monitor (`script-health-monitor.js`)
-Monitors multiple Google Ads scripts and sends alerts when they haven't run according to schedule.
+### `/4cs/` - The 4 C's Framework Scripts
+Campaign monitoring scripts based on the 4 C's methodology (Check, Chart, Change, Cognition):
 
-**Features:**
-- Tracks script execution across multiple accounts
-- Sends email alerts for missed runs (only once per failure)
-- Auto-clears alerts when scripts resume normal operation
-- Supports hourly, daily, weekly, and monthly schedules
+- **`4cs-1-check.js`** - Alerts when campaigns had zero impressions yesterday
+- **`4cs-2-chart.js`** - Creates performance charts and visualizations
+- **`4cs-3-change.js`** - Automated bid and budget adjustments
+- **`4cs-4-cognition.js`** - AI-powered insights and recommendations
 
-**Setup:**
-1. Create a Google Sheet and run the script's `initializeSheet()` function
-2. Add email recipients in cell B2
-3. Set up 15-minute monitoring trigger
-4. Add script IDs to monitor in the sheet
+### `/health/` - Script Monitoring & Health
+Tools for monitoring script performance and ensuring reliable execution:
 
-**In your monitored scripts, add:**
-```javascript
-function logScriptHealth(scriptId) {
-  const MONITOR_SHEET_URL = 'YOUR_SHEET_URL';
-  // ... (function code from instructions)
-}
+- **`script-health-monitor.js`** - Monitors multiple scripts across accounts and sends alerts for failures
+- **`script-health-post.md`** - Documentation for health monitoring setup
+- **`script-log-mike.js`** - Centralized logging system
+- **`script-running-check.md`** - Guide for verifying script execution
 
-// Call at end of main():
-logScriptHealth(101); // Your script's ID
-```
+### `/negatives/` - Negative Keywords Management
+Automated negative keyword research and application:
+
+- **`neg-v8.js`** - Advanced negative keyword script with MCC support and account scheduling
+
+### `/ngram/` - Search Term Analysis
+N-gram analysis for search term optimization:
+
+- **`ngram.js`** - Analyzes search terms to identify patterns and optimization opportunities
 
 ## Installation
 

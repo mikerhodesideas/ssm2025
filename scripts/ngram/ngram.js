@@ -1,7 +1,7 @@
 // template sheet to copy -> https://docs.google.com/spreadsheets/d/1f_1C2fZneYLfL_7ooDwnEJdL2o_L2J4XC35VGoACjQA/copy
 
-const SHEET_URL  = 'https://docs.google.com/spreadsheets/d/1OA2hH5U_fPLu-PVncf05nnamACJxNtT-ehdpURc3k5Q/edit?gid=712637129#gid=712637129'        // create a copy of the template above first
-const CLIENTCODE = 'module2'        // this string will be added to the sheet name 
+const SHEET_URL  = ''        // create a copy of the template above first
+const CLIENTCODE = ''        // this string will be added to the sheet name 
 
 // ------------------ //   (c) MikeRhodes.com.au   // ------------------- //
 
