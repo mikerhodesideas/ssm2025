@@ -151,7 +151,7 @@ function setupSheet(spreadsheet, sheetName) {
   }
   
   // Add headers
-  const headers = ["Account Name", "Account ID (CID)", "Date", "Conversion Action Name", "Conversions"];
+  const headers = ["Account Name", "Account ID (CID)", "Date", "Conversion Action Name", "All Conversions"];
   sheet.appendRow(headers);
   sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
   
@@ -176,7 +176,7 @@ function logCompletion(spreadsheet, accountType) {
     const message = accountType === 'MCC' 
       ? `Script finished. New spreadsheet created: ${url}`
       : `Script finished. Spreadsheet URL: ${url}`;
-    SpreadsheetApp.getUi().alert(message);
+    Logger.log(message);
   }
 }
 

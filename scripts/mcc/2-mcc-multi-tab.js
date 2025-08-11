@@ -2,18 +2,18 @@
 // --- CONFIGURATION ---
 
 // 1. SPREADSHEET URL (Optional)
-//    - Leave blank ("") to create a new spreadsheet automatically.
-//    - Or, paste the URL of an existing Google Sheet (e.g., "https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit")
+//    - Leave blank ('') to create a new spreadsheet automatically.
+//    - Or, paste the URL of an existing Google Sheet (e.g., 'https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit')
 const SHEET_URL = '';
 
-// 2. TEST CID (Optional)
-//    - To run for a single account for testing, enter its Customer ID (e.g., "123-456-7890").
-//    - Leave blank ("") to run for all accounts under the MCC.
-const SINGLE_CID_FOR_TESTING = ''; // Example: "123-456-7890" or ""
+// 2. TEST CIDs (Optional)
+//    - To run for specific accounts for testing, enter their Customer IDs as a comma-separated list (e.g., '639-644-4327, 968-809-7277').
+//    - Leave blank ('') to run for all accounts under the MCC.
+const CID_FOR_TESTING = '639-644-4327, 968-809-7277'; // Example: '123-456-7890, 987-654-3210' or ''
 
 // 3. TIME PERIOD
-//    - Choose "LAST_7_DAYS" or "LAST_30_DAYS".
-const SELECTED_TIME_PERIOD = 'LAST_7_DAYS'; // Options: "LAST_7_DAYS", "LAST_30_DAYS"
+//    - Choose 'LAST_7_DAYS' or 'LAST_30_DAYS'.
+const SELECTED_TIME_PERIOD = 'LAST_7_DAYS'; // Options: 'LAST_7_DAYS', 'LAST_30_DAYS'
 
 // 4. SPENDING THRESHOLD
 //    - Only include accounts with spend greater than this amount during the selected period.
@@ -42,7 +42,7 @@ function getAccountSpend(timePeriod) {
 
     while (rows.hasNext()) {
       const row = rows.next();
-      totalSpend += parseFloat(row["metrics.cost_micros"]) / 1000000; // Convert micros to currency
+      totalSpend += parseFloat(row['metrics.cost_micros']) / 1000000; // Convert micros to currency
     }
 
     return totalSpend;
@@ -57,10 +57,11 @@ function main() {
   Logger.log(`Spending threshold: ${thresholdSpend}`);
   Logger.log(`Tab naming: ${useAccountName ? 'Account Name' : 'CID'}`);
 
-  if (SINGLE_CID_FOR_TESTING) {
-    Logger.log(`Running in test mode for CID: ${SINGLE_CID_FOR_TESTING}`);
+  if (CID_FOR_TESTING) {
+    const cidList = CID_FOR_TESTING.split(',').map(cid => cid.trim()).filter(cid => cid.length > 0);
+    Logger.log(`Running in test mode for CIDs: ${cidList.join(', ')}`);
   } else {
-    Logger.log("Running for all accounts in the MCC.");
+    Logger.log('Running for all accounts in the MCC.');
   }
 
   const spreadsheet = getSpreadsheet();
@@ -77,18 +78,19 @@ function main() {
   indexSheet.clear();
 
   // Add headers to index sheet
-  const indexHeaders = ["Account ID (CID)", "Account Name", "Spend", "Link"];
+  const indexHeaders = ['Account ID (CID)', 'Account Name', 'Spend', 'Link'];
   indexSheet.appendRow(indexHeaders);
-  indexSheet.getRange(1, 1, 1, indexHeaders.length).setFontWeight("bold");
+  indexSheet.getRange(1, 1, 1, indexHeaders.length).setFontWeight('bold');
 
   const accountsData = []; // Store account info for index
   const qualifyingAccounts = []; // Accounts that meet spend threshold
 
   let accountIterator;
-  if (SINGLE_CID_FOR_TESTING) {
-    accountIterator = AdsManagerApp.accounts().withIds([SINGLE_CID_FOR_TESTING]).get();
+  if (CID_FOR_TESTING) {
+    const cidList = CID_FOR_TESTING.split(',').map(cid => cid.trim()).filter(cid => cid.length > 0);
+    accountIterator = AdsManagerApp.accounts().withIds(cidList).get();
     if (!accountIterator.hasNext()) {
-      Logger.log(`Error: Test CID ${SINGLE_CID_FOR_TESTING} not found or not accessible.`);
+      Logger.log(`Error: Test CIDs ${cidList.join(', ')} not found or not accessible.`);
       return;
     }
   } else {
@@ -100,7 +102,7 @@ function main() {
     const account = accountIterator.next();
     AdsManagerApp.select(account);
 
-    const accountName = account.getName() || "N/A";
+    const accountName = account.getName() || 'N/A';
     const accountId = account.getCustomerId();
 
     // Get spend for the account
@@ -139,9 +141,9 @@ function main() {
       const accountSheet = spreadsheet.insertSheet(tabName);
 
       // Add headers
-      const headers = ["Date", "Conversion Action Name", "Conversions"];
+      const headers = ['Date', 'Conversion Action Name', 'Conversions'];
       accountSheet.appendRow(headers);
-      accountSheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+      accountSheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
 
       // Get conversion data
       try {
@@ -151,11 +153,11 @@ function main() {
           const cleanedData = reportData.map(row => [row[2], row[3], row[4]]); // Date, Action, Conversions
           accountSheet.getRange(2, 1, cleanedData.length, cleanedData[0].length).setValues(cleanedData);
         } else {
-          accountSheet.appendRow(["No conversion data found for this period", "", ""]);
+          accountSheet.appendRow(['No conversion data found for this period', '', '']);
         }
       } catch (e) {
         Logger.log(`Error processing account ${accountName} (${accountId}): ${e.message}`);
-        accountSheet.appendRow(["Error loading data", e.message, ""]);
+        accountSheet.appendRow(['Error loading data', e.message, '']);
       }
 
       // Auto-resize columns to fit content
@@ -173,7 +175,7 @@ function main() {
         accountId,
         accountName,
         spend.toFixed(2),
-        `=HYPERLINK("${sheetUrl}", "Go to ${tabName}")`
+        `=HYPERLINK('${sheetUrl}', 'Go to ${tabName}')`
       ]);
     }
   });
@@ -183,7 +185,7 @@ function main() {
     indexSheet.getRange(2, 1, accountsData.length, accountsData[0].length).setValues(accountsData);
     Logger.log(`Created tabs for ${accountsData.length} accounts with spend > ${thresholdSpend}`);
   } else {
-    indexSheet.appendRow(["No accounts found with spend > " + thresholdSpend, "", "", ""]);
+    indexSheet.appendRow(['No accounts found with spend > ' + thresholdSpend, '', '', '']);
   }
 
   // Format the index sheet
@@ -213,9 +215,9 @@ function getConversionDataForAccount(accountId, accountName) {
 
   while (rows.hasNext()) {
     const row = rows.next();
-    const date = row["segments.date"];
-    const conversionActionName = row["conversion_action.name"];
-    const conversions = parseFloat(row["metrics.all_conversions"]); // Use parseFloat for fractional conversions
+    const date = row['segments.date'];
+    const conversionActionName = row['conversion_action.name'];
+    const conversions = parseFloat(row['metrics.all_conversions']); // Use parseFloat for fractional conversions
 
     accountData.push([
       accountName,
@@ -237,7 +239,7 @@ function getSpreadsheet() {
       Logger.log(`Using existing spreadsheet: ${SHEET_URL}`);
       return SpreadsheetApp.openByUrl(SHEET_URL);
     } else {
-      const spreadsheetName = `MCC Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), "yyyy-MM-dd")}`;
+      const spreadsheetName = `MCC Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), 'yyyy-MM-dd')}`;
       Logger.log(`Creating new spreadsheet: ${spreadsheetName}`);
       const newSpreadsheet = SpreadsheetApp.create(spreadsheetName);
       Logger.log(`New spreadsheet created: ${newSpreadsheet.getUrl()}`);
