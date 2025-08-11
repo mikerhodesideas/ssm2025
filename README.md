@@ -25,8 +25,6 @@ Campaign monitoring scripts based on the 4 C's methodology (Check, Chart, Change
 Tools for monitoring script performance and ensuring reliable execution:
 
 - **`script-health-monitor.js`** - Monitors multiple scripts across accounts and sends alerts for failures
-- **`script-health-post.md`** - Documentation for health monitoring setup
-- **`script-log-mike.js`** - Centralized logging system
 - **`script-running-check.md`** - Guide for verifying script execution
 
 ### `/negatives/` - Negative Keywords Management
@@ -38,6 +36,22 @@ Automated negative keyword research and application:
 N-gram analysis for search term optimization:
 
 - **`ngram.js`** - Analyzes search terms to identify patterns and optimization opportunities
+
+### `/simple/` - Simple Utility Scripts
+Basic utility scripts for common Google Ads tasks:
+
+- **`search-terms.js`** - Basic search term analysis and export
+- **`search-terms-v2.js`** - Enhanced version with additional features
+
+### `/apps-scripts/` - Google Apps Scripts
+Google Apps Scripts for Google Sheets and other Google Workspace applications:
+
+- **`email-sheet-doc.js`** - Email automation using Google Sheets data
+
+### `/mega/` - Advanced Prompt Engineering
+Documentation and resources for advanced prompt engineering:
+
+- **`mega-prompt.md`** - Comprehensive guide to prompt engineering techniques
 
 ## Installation
 
