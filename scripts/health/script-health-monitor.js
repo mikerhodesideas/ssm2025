@@ -480,7 +480,7 @@ function getConfig() {
   }
   
   /**
-   * Create menu on sheet open
+   * Create menu on sheet open and auto-setup trigger if needed
    */
   function onOpen() {
     const ui = SpreadsheetApp.getUi();
@@ -494,8 +494,34 @@ function getConfig() {
       .addItem('📋 Copy Log Call (Latest Script)', 'copyLogCall')
       .addSeparator()
       .addItem('View Instructions', 'showInstructions')
+      .addItem('📋 Instructions for AI', 'copyInstructionsForAI')
       .addItem('Test Email Alert', 'testEmail')
       .addToUi();
+    
+    // Auto-setup monitoring trigger if it doesn't exist
+    autoSetupTrigger();
+  }
+  
+  /**
+   * Automatically set up the monitoring trigger if it doesn't exist
+   */
+  function autoSetupTrigger() {
+    const triggers = ScriptApp.getProjectTriggers();
+    const hasMonitorTrigger = triggers.some(trigger => 
+      trigger.getHandlerFunction() === 'monitorScriptHealth'
+    );
+    
+    if (!hasMonitorTrigger) {
+      try {
+        ScriptApp.newTrigger('monitorScriptHealth')
+          .timeBased()
+          .everyMinutes(15)
+          .create();
+        console.log('Monitoring trigger automatically created');
+      } catch (e) {
+        console.log('Could not auto-create monitoring trigger: ' + e.toString());
+      }
+    }
   }
   
   /**
@@ -761,4 +787,126 @@ function getConfig() {
   `;
     
     SpreadsheetApp.getUi().alert(instructions);
+  }
+  
+  /**
+   * Copy instructions for AI with sheet URL and latest script ID
+   */
+  function copyInstructionsForAI() {
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const sheetUrl = ss.getUrl();
+    const sheet = ss.getSheetByName('Monitor');
+    
+    // Find the last row with a script ID
+    const lastRow = sheet.getLastRow();
+    let scriptId = null;
+    let scriptName = null;
+    
+    for (let row = lastRow; row >= 6; row--) {
+      const id = sheet.getRange(row, 1).getValue();
+      if (id) {
+        scriptId = id;
+        scriptName = sheet.getRange(row, 2).getValue() || `Script ${id}`;
+        break;
+      }
+    }
+    
+    if (!scriptId) {
+      SpreadsheetApp.getUi().alert('No scripts found in the monitor sheet. Please add a script first.');
+      return;
+    }
+    
+    const logFunction = `function logScriptHealth(scriptId) {
+  const MONITOR_SHEET_URL = '${sheetUrl}';
+  
+  try {
+    const sheet = SpreadsheetApp.openByUrl(MONITOR_SHEET_URL).getSheetByName('Monitor');
+    const dataRange = sheet.getRange(6, 1, sheet.getLastRow() - 5, 1);
+    const scriptIds = dataRange.getValues().flat();
+    const rowIndex = scriptIds.indexOf(scriptId);
+    
+    if (rowIndex !== -1) {
+      const actualRow = rowIndex + 6;
+      sheet.getRange(actualRow, 5).setValue(new Date());
+      sheet.getRange(actualRow, 6).setValue(''); // Clear any alert flag
+    }
+  } catch (e) {
+    // Don't let monitoring errors break your script
+    Logger.log('Could not update monitor: ' + e.toString());
+  }
+}`;
+
+    const logCall = `logScriptHealth(${scriptId}); // ${scriptName}`;
+    
+    const aiInstructions = `# Google Apps Script Monitoring Setup Instructions
+
+You need to add script health monitoring to a Google Ads script. Follow these steps exactly:
+
+## Step 1: Add the Log Function
+Add this function at the END of the script (after all other functions):
+
+\`\`\`javascript
+${logFunction}
+\`\`\`
+
+## Step 2: Add Log Calls
+Add this line in TWO places:
+\`\`\`javascript
+${logCall}
+\`\`\`
+
+### WHERE to add the log call:
+1. **At the very end of the main() function** - just before the closing brace
+2. **Before every return statement** - Search the script for all occurrences of "return" and add the log call on the line immediately before each return statement
+
+### Example:
+\`\`\`javascript
+function main() {
+  // Your existing code here
+  
+  if (someCondition) {
+    ${logCall}
+    return; // Early exit
+  }
+  
+  // More code here
+  
+  ${logCall}
+} // End of main function
+\`\`\`
+
+## Instructions:
+1. Search through the entire script for all "return" statements
+2. Add the log call before each return statement  
+3. Add the log call at the end of main() function
+4. Add the logScriptHealth function at the very end of the script
+5. Return the complete modified script
+
+The user will copy-paste your response directly into Google Apps Script, so make sure it's complete and ready to run.
+
+## User's Script:
+[Paste your Google Ads script below]`;
+
+    // Create HTML dialog for easy copying  
+    const html = `
+      <div style="font-family: Arial, sans-serif; padding: 20px;">
+        <h3>Instructions for AI Implementation</h3>
+        <p>Copy this text and paste it into your AI conversation along with your script to automatically add monitoring:</p>
+        <textarea id="instructionsArea" style="width: 100%; height: 400px; font-family: monospace; font-size: 12px; border: 1px solid #ccc; padding: 10px;">${aiInstructions}</textarea>
+        <br><br>
+        <button onclick="document.getElementById('instructionsArea').select(); document.execCommand('copy'); google.script.host.close();" 
+                style="background: #1a73e8; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+          Copy & Close
+        </button>
+        <button onclick="google.script.host.close();" 
+                style="background: #dadce0; color: #3c4043; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; margin-left: 10px;">
+          Close
+        </button>
+      </div>
+    `;
+    
+    const htmlOutput = HtmlService.createHtmlOutput(html)
+      .setWidth(700)
+      .setHeight(550);
+    SpreadsheetApp.getUi().showModalDialog(htmlOutput, 'Instructions for AI Implementation');
   }
