@@ -35,7 +35,7 @@ function getOrCreateSpreadsheet() {
         Logger.log(`Using existing spreadsheet: ${SHEET_URL}`);
         return SpreadsheetApp.openByUrl(SHEET_URL);
     } else {
-        const spreadsheetName = `MCC Master Sheet - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), "yyyy-MM-dd")}`;
+        const spreadsheetName = `MCC Master Sheet - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), 'yyyy-MM-dd')}`;
         Logger.log(`Creating new spreadsheet: ${spreadsheetName}`);
         const newSpreadsheet = SpreadsheetApp.create(spreadsheetName);
         Logger.log(`New spreadsheet created: ${newSpreadsheet.getUrl()}`);
@@ -65,7 +65,7 @@ function executeMccLogic() {
 
     // Check if all sheet is empty (first run)
     if (allSheet.getLastRow() <= 1) {
-        Logger.log("First run detected - populating all accounts tab");
+        Logger.log('First run detected - populating all accounts tab');
         populateAllTab(allSheet);
     }
 
@@ -73,30 +73,30 @@ function executeMccLogic() {
     processAccounts(spreadsheet, settingsSheet);
 
     Logger.log(`MCC data written to: ${spreadsheet.getUrl()}`);
-    if (!SHEET_URL) { // Only show alert if we created the sheet
-        SpreadsheetApp.getUi().alert(`Script finished. New spreadsheet created: ${spreadsheet.getUrl()}`);
+    if (!SHEET_URL) { // Only log if we created the sheet
+        Logger.log(`Script finished. New spreadsheet created: ${spreadsheet.getUrl()}`);
     }
 }
 
 function setupSettingsSheet(sheet) {
-    const headers = ["Account ID (CID)", "Account Name", "Account URL", "Last Run", "Status"];
+    const headers = ['Account ID (CID)', 'Account Name', 'Account URL', 'Last Run', 'Status'];
     sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
 
     // Auto-resize columns
     sheet.autoResizeColumns(1, headers.length);
 }
 
 function setupAllSheet(sheet) {
-    const headers = ["Account ID (CID)", "Account Name", "Last 30-Day Spend", "Status"];
+    const headers = ['Account ID (CID)', 'Account Name', 'Last 30-Day Spend', 'Status'];
     sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
 
-    Logger.log("All accounts sheet created");
+    Logger.log('All accounts sheet created');
 }
 
 function populateAllTab(allSheet) {
-    Logger.log("Populating all accounts tab with MCC account data...");
+    Logger.log('Populating all accounts tab with MCC account data...');
 
     const accountIterator = AdsManagerApp.accounts().get();
     const accountsData = [];
@@ -105,7 +105,7 @@ function populateAllTab(allSheet) {
         const account = accountIterator.next();
         AdsManagerApp.select(account);
 
-        const accountName = account.getName() || "N/A";
+        const accountName = account.getName() || 'N/A';
         const accountId = account.getCustomerId();
 
         // Get spend for the account
@@ -118,7 +118,7 @@ function populateAllTab(allSheet) {
             accountId,
             accountName,
             spend.toFixed(2),
-            "Active"
+            'Active'
         ]);
     }
 
@@ -147,7 +147,7 @@ function getAccountSpend(timePeriod) {
 
         while (rows.hasNext()) {
             const row = rows.next();
-            totalSpend += parseFloat(row["metrics.cost_micros"]) / 1000000; // Convert micros to currency
+            totalSpend += parseFloat(row['metrics.cost_micros']) / 1000000; // Convert micros to currency
         }
 
         return totalSpend;
@@ -158,11 +158,11 @@ function getAccountSpend(timePeriod) {
 }
 
 function processAccounts(spreadsheet, settingsSheet) {
-    Logger.log("Processing accounts from settings sheet...");
+    Logger.log('Processing accounts from settings sheet...');
 
     const lastRow = settingsSheet.getLastRow();
     if (lastRow <= 1) {
-        Logger.log("No accounts found in settings sheet");
+        Logger.log('No accounts found in settings sheet');
         return;
     }
 
@@ -189,7 +189,7 @@ function processAccounts(spreadsheet, settingsSheet) {
             // Update last run timestamp
             const now = new Date();
             settingsSheet.getRange(i + 2, 4).setValue(now);
-            settingsSheet.getRange(i + 2, 5).setValue("Completed");
+            settingsSheet.getRange(i + 2, 5).setValue('Completed');
 
         } catch (e) {
             Logger.log(`Error processing account ${accountName} (${accountId}): ${e.message}`);
@@ -200,32 +200,32 @@ function processAccounts(spreadsheet, settingsSheet) {
 
 function executeSingleAccountLogic() {
     Logger.log('Executing single account logic...');
-    
+
     // Get current account info
     const currentAccount = AdsApp.currentAccount();
     const accountId = currentAccount.getCustomerId();
     const accountName = currentAccount.getName() || accountId;
-    
+
     Logger.log(`Processing single account: ${accountName} (${accountId})`);
-    
+
     // Create or get spreadsheet for single account
     const spreadsheet = getOrCreateSingleAccountSpreadsheet(accountName, accountId);
-    
+
     // Get conversion data and populate sheet
     const conversionData = getConversionDataForAccount(accountId, accountName);
     const dataSheet = spreadsheet.getSheets()[0];
-    
+
     if (conversionData.length > 0) {
         dataSheet.getRange(2, 1, conversionData.length, conversionData[0].length).setValues(conversionData);
         Logger.log(`Added ${conversionData.length} conversion records to spreadsheet`);
     } else {
-        dataSheet.appendRow(["No conversion data found for this period", "", ""]);
+        dataSheet.appendRow(['No conversion data found for this period', '', '']);
         Logger.log('No conversion data found for this account');
     }
-    
+
     Logger.log(`Single account data written to: ${spreadsheet.getUrl()}`);
     if (!SHEET_URL) {
-        SpreadsheetApp.getUi().alert(`Script finished. Spreadsheet URL: ${spreadsheet.getUrl()}`);
+        Logger.log(`Script finished. Spreadsheet URL: ${spreadsheet.getUrl()}`);
     }
 }
 
@@ -233,27 +233,27 @@ function getOrCreateSingleAccountSpreadsheet(accountName, accountId) {
     if (SHEET_URL) {
         Logger.log(`Using existing spreadsheet: ${SHEET_URL}`);
         const spreadsheet = SpreadsheetApp.openByUrl(SHEET_URL);
-        
+
         // Setup the sheet with headers if needed
         const sheet = spreadsheet.getSheets()[0];
         if (sheet.getLastRow() === 0) {
             setupAccountSheet(sheet);
         }
-        
+
         return spreadsheet;
     } else {
         // Create a new spreadsheet for this single account
         const sheetName = getSheetName(accountName, accountId);
-        const spreadsheetName = `${sheetName} - Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), "yyyy-MM-dd")}`;
+        const spreadsheetName = `${sheetName} - Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), 'yyyy-MM-dd')}`;
         Logger.log(`Creating new spreadsheet: ${spreadsheetName}`);
-        
+
         const newSpreadsheet = SpreadsheetApp.create(spreadsheetName);
-        
+
         // Setup the first sheet
         const defaultSheet = newSpreadsheet.getSheets()[0];
         defaultSheet.setName('Conversion Data');
         setupAccountSheet(defaultSheet);
-        
+
         Logger.log(`Created new spreadsheet: ${newSpreadsheet.getUrl()}`);
         return newSpreadsheet;
     }
@@ -282,7 +282,7 @@ function executeSingleAccountLogicForMcc(spreadsheet, accountId, accountName, ac
         Logger.log(`Created spreadsheet for ${accountName} with ${conversionData.length} conversion records`);
     } else {
         const accountSheet = accountSpreadsheet.getSheets()[0];
-        accountSheet.appendRow(["No conversion data found for this period", "", ""]);
+        accountSheet.appendRow(['No conversion data found for this period', '', '']);
         Logger.log(`No conversion data found for ${accountName}`);
     }
 
@@ -299,9 +299,9 @@ function getSheetName(accountName, accountId) {
 }
 
 function setupAccountSheet(sheet) {
-    const headers = ["Date", "Conversion Action Name", "Conversions"];
+    const headers = ['Date', 'Conversion Action Name', 'Conversions'];
     sheet.appendRow(headers);
-    sheet.getRange(1, 1, 1, headers.length).setFontWeight("bold");
+    sheet.getRange(1, 1, 1, headers.length).setFontWeight('bold');
 }
 
 function getConversionDataForAccount(accountId, accountName) {
@@ -324,9 +324,9 @@ function getConversionDataForAccount(accountId, accountName) {
 
     while (rows.hasNext()) {
         const row = rows.next();
-        const date = row["segments.date"];
-        const conversionActionName = row["conversion_action.name"];
-        const conversions = parseFloat(row["metrics.all_conversions"]);
+        const date = row['segments.date'];
+        const conversionActionName = row['conversion_action.name'];
+        const conversions = parseFloat(row['metrics.all_conversions']);
 
         accountData.push([
             date,
@@ -354,7 +354,7 @@ function isValidAccountId(accountId) {
 
 function createAccountSpreadsheet(sheetName, accountId, accountName) {
     // Create a new spreadsheet for this account
-    const spreadsheetName = `${sheetName} - Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), "yyyy-MM-dd")}`;
+    const spreadsheetName = `${sheetName} - Conversion Report - ${Utilities.formatDate(new Date(), AdsApp.currentAccount().getTimeZone(), 'yyyy-MM-dd')}`;
     Logger.log(`Creating new spreadsheet: ${spreadsheetName}`);
 
     const newSpreadsheet = SpreadsheetApp.create(spreadsheetName);
