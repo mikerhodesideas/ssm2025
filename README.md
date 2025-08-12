@@ -1,7 +1,7 @@
 # Scripts & Sheets Mastery 2025
 
 A collection of Google Ads Scripts for advanced automation and reporting.
-
+ 
 ## Script Folders
 
 ### `/mcc/` - MCC Account Management Scripts
