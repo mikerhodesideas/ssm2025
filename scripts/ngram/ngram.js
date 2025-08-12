@@ -155,31 +155,3 @@ function determineBucket(cost, conv, roas, tCost, tRoas) {
     if (cost < tCost) return roas < tRoas ? 'meh' : 'flukes';
     return roas < tRoas ? 'costly' : 'profitable';
 }
-
-/*
-Don't own my full PMax Insights Script yet?
-If you just need it for a single account - go here to buy: https://mikerhodes.circle.so/checkout/latest-script  
-download the latest version (once purchased): https://mikerhodes.circle.so/c/script/ 
-
-If you want it for multiple accounts, the MCC version makes this much easier. 
-Just add the script once & create the Insights Spreadsheet for every client account you choose. 
-This means much faster updates when I create new versions. It also means client accounts can’t see the code (great for audits!). 
-You also get the single account script included when you buy the MCC version.
-For MCC script, go here to buy: 
-https://mikerhodes.circle.so/checkout/latest-mcc-script  
-
-
-Both scripts come with lifetime updates & free support. 
-As well as training & documentation, much of which is freely available, 
-along with some other scripts here  https://mikerhodes.circle.so/c/free-scripts/ 
-
-In additional, both scripts come with $100 discount voucher for my ‘scripts & sheets mastery’ training.
-*/
-// (c) MikeRhodes.com.au
-
-
-
-// Now hit preview (or run) and let's get this party started!
-
-
-// PS you're awesome! Thanks for using this script.

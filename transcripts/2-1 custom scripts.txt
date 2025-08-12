@@ -1,0 +1,70 @@
+Welcome back to module In this module, we're going to talk about how to customize scripts, um, again, whether they're mine, someone else is, something you found online, or something that AI created for you.
+So, let's dive into my free site. So, if you go to microads.circle.sebit of a mouthful, um, I think if you go to microads.com.au, it'll redirect you here anyway.
+And then come into this free script section and let's grab the Ngram one. So it's people like playing with Ngrams and if we come down to the code here, we're just going to copy and paste all of this code and pop that into our same area that we did before just going to delete what's there and paste this
+script in. Now this time, it's a little bit different at the top here. So this time it's telling us to copy a template sheet.
+So let's grab that URL there, including the slash copy on the end. If we copy that and paste it into a new tab, then we get Google Sheets Copy Document message.
+So we're going to say, yes, make a copy of this, please. Now, this isn't anything crazy right. We've done this before.
+We know that if we've got a Google sheet, we're going to then copy that URL. I'm going to grab the whole thing, gobblingoog and all, and stick it in between those single quotes.
+So this is why that scary challenge. If you went through module one, that's what we did in module one was just cover all of the basics.
+If you skip the head to module two, then I'm guessing you understand how to copy sheets and copy and paste URLs and put them in between the single quotes here.
+And let's have as a client code module two, and we're just going to hit preview again so that we can see the logs while the script is running, rather than hit run, disappear off to a different screen, and have to click again to find those logs.
+This shouldn't take very long to run, give it a few seconds, and we'll see a log saying, yep, I'm starting, I'm going off, I'm having a think about this, doing some stuff with Ngrams, which hopefully you've used before, these are Ngrams for products in here.
+And yep, it started that as finished, seconds, lovely. Now if we go over to our sheet which was blank before we now see that we've got a couple of tabs filled with data.
+I'll let you discover this later on. This is showing us the performance of individual words in our product titles as compared with how many people are searching for those for products and then also for search categories inside of PMAX campaign.
+This is a little tiny corner of my main PMAX script, essentially. Now, when we went through the challenge in module one, we were just copying and pasting code, and it was kind of throw away code.
+But now that we've got some code here that we might want to keep, we might want to use over and over again, we might want to start building a little library of various scripts that we find.
+So, let's copy and paste this whole thing with our sheet URL and our client code here. And the reason for that client code, by the way, you can see it just got added to the name of the sheet.
+So I'll often do that. Have something at the top where you can put in a little code or a name that represents the client that you're working on just to help you organize the sheets because otherwise trying to find some sheet later on in Google Drive when everything is named the same, you're not very 
+easy. So now what I want to do is switch over to a tool called cursor. Now, don't freak out. This may seem a scary place to be, but it's going to come in so, so handy as we start to expand what's possible with scripts.
+And as we start to maybe write our own scripts, but more importantly, given that it's halfway through while I'm recording this, get AI to help us with this.
+So cursor is the tool that I've been using all day every day for gosh, over a year and a half at this point.
+It's where I write all of my scripts. It's where I edit and change stuff. It's also where I build tools like 
+So we basically have three main parts to cursor. It's not nearly as scary as it looks. Over here on the side, we've got a file editor.
+So over here we can create files and folders. So let's create a folder and call it scripts. And then let's create a new file in here.
+Let's call that ingram. And I'm going to put .js on the end, which just tells cursor, hey, this is a JavaScript piece of text that I'm pasting in here.
+The benefit of that is it then changes all of the colors of this code, which makes the code easier to read.
+Different colors mean different things. We don't really need to worry about that because we're not trying to learn how to write JavaScript, but we are going to be editing and tweaking scripts.
+And so this just makes life much much easier. So we can build up a little library over here of all of the different scripts.
+If you really wanted, you could come in here at level one, again, .js, level two, level three, and you could go and copy all of the scripts from the scary challenge that we went through or better yet, actually, we'll go to agent where we started right at the beginning of the first video, go back
+to that scripts page and we went through this scary challenge last time but I've got a bunch of free scripts in here on this CS page and so these would be four great scripts to download and play with, just scroll down the page and each section has a little bit of blurb that tells you what it is.
+You can, if you want, come in here and look at the code, but I've made it really easy for you.
+You can just hit the big copy script button. Let's go back into cursor. Let's change this from being level or CS, part and then paste that code in there.
+So I would highly suggest. Highly suggest, I don't think that's a phrase, Mike. Okay, that you create just to get you comfortable with using cursor, which by the way, if you just go to cursor.com, I didn't actually tell you that bit.
+Did I get a cursor.com and then just the homepage of that. Oh, it wants to direct me to agents. Oh, that's you.
+Okay, because I'm logged into my cursor account. I'm guessing it's going to keep poking you back in and out of there.
+Okay, let's log out of that. Oh, there was a download button. If you get a cursor.com, then you can just hit the big download button for whatever system you're on.
+And then install that. Start with the free version. Very quickly, you'll probably want to pay them the $a month for the paid version.
+But if you're only creating editing scripts a few minutes a week, Don't bother paying them $just use the free version for it now.
+But download cursor, get it installed on whatever computer you're using, and it looks like this. You can change the colors you can have light mode, dark mode, all that fancy stuff, but we can start to have that library.
+Now I said three screens, right? So far we're only seeing two. We've got files over on the side here. In the middle, we've got our code.
+We've got our canvas, which is where we're going to play with code. and then there's a few different ways to do this, but usually I will use these little buttons right up in the top right-hand corner to open up this right-hand pane.
+And this is basically chatGPT or Claude or whichever AI you tend to use right here in the same place where we're writing and editing code and storing code.
+So we get to do everything in the same place, but feels like I'm getting ahead of myself. feels like we're diving in at the deep end.
+So let's instead go back and think about AI, okay? We're using chatgbt or Claude.ai if you prefer.
+And let's do this. Let's start with this. We've got our ngram script that we copied before. Let's copy that to the clipboard again.
+Go back into chat GBT and basically say let's say explain this code to me and paste that in and hit go because we want to understand if we don't know anything about this code, is it going to change anything in my account?
+Is it going to affect my account in any way? And so at a high level it then tells us what it's going to do, and then even gives us a line by line breakdown.
+So if you do want to learn more about how to code, about how to write JavaScript, which is the coding language that these are built in, this is a fantastic tool.
+When I was learning to code again three or four years ago, I learned a long time ago, but I was learning again and I actually hired a guy that I would chat to once a week for an hour.
+It was $$an hour, I think. And I would ask him about the code that I was trying to write.
+And why did I get this error? And why are we doing it this way? And not that way. Chat GBT is a wonderful replacement for that.
+Or indeed, Clote. Clote. Clored. Explain this code to me. We paste that in. So the UI is slightly different when you paste big chunks of text in, it kind of makes things a little bit easier to read as you add all of your attachments in here, but it's roughly the same sort of thing.
+Now we're going to get different answers each time. Obviously. But you can see very, very similar kind of reply at a high level.
+Here's the purpose of it. This is what it does. blah, blah, blah, blah, blah, wonderful. So start there, start asking questions about scripts, because that's then the next phase to move on to is then having AI edit scripts for us and ultimately write entirely new scripts for us.
+But we'll cover that in the next module. Don't want to get ahead of myself. But this AI rather than, well, what we will get to the point of doing as using AI as I say to edit and write scripts but if you're doing it in chat GPT or Claude or Groc or whatever it is that you use you're going to be doing
+a lot of copying and pasting back and forth and as you've probably seen from here this is a really horrible place to try and edit and change our code you know if this said oh you need to change this line from this to this to do that in here we'd be scrolling through here trying to find the exact line
+. It's a really horrible place to try and edit code and that's why I would highly highly recommend you have a little play with the free version of cursor because when we ask the AI question here we can do the same thing here.
+We can ask it AI to make changes to our code. And it is able to edit the file right here.
+We can choose to be in control of that and approve the changes or not. Or we can just let it rip and write a whole bunch of code for us.
+I'm actually asking it to explain the different code on there now. I've asked it to explain that first script from CS rather than Ngram because that's the one I had highlighted.
+And so that's the one I thought I was talking about. So that's why you're seeing It's completely different answer there, my bad.
+Using all of these things together in the same place just makes life so much easier and this is so much of a nicer place to edit.
+It also has this magical quality of understanding what it is that you're trying to do. So if I delete this date range here, where it says yes today and I start typing last last, it just knows that I probably mean last days, which is exactly what I was going to type.
+Now if I hit tab to write the last days and I come down here, it's highlighted this little part.
+We can't really see it because of this, but we've highlighted this little part and if I hit tab again, it changes that log message that's going to be shown to the user, instead of saying received impressions yesterday, it's changed that and it hasn't just put But last, underscore underscore days 
+turned it into something nice and easy to read. Try doing that in the Google Ads UI. Now, you may not need this sort of advanced functionality yet, but as you start getting even a little bit more familiar with Google Ads scripts, as you start to see the power of scripts and what is possible to create
+with really, at this point, very, very little work, very little effort on your part, your job is using the imagination of what would you like the script to do.
+And like I've said, there's loads of scripts out there online. I've got a bunch, Nils has got a bunch, Fred's got a bunch, there's a whole stack of people writing wonderful scripts these days and sharing them.
+You'll find heaps of free scripts on LinkedIn. Start to build your own little library. Start to chat to the AI and understand what is this code doing.
+And then, as we get through the next few modules, we'll start to change those and alter them and make them work for us and take some of those Lego blocks that we've been playing with for the first couple of modules here and start to put them together in different ways that actually help you do exactly
+what you want to do. So I hope that's been useful. I'll see you in the next video. Bye for now.

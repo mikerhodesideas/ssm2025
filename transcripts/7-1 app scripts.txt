@@ -1,0 +1,66 @@
+So if we jump into Brave, um, scripts.google you can see down the bottom here there are a few little examples in the getting started section highly recommend you have a look there.
+But I'm gonna dive straight into a use case because I think by seeing some of the power of this I'm hoping that it will trigger some ideas for yourself.
+So I have here, uh, three emails from Sam sitting in my inbox and I use this pattern a lot. of labels.
+You can see I've got a whole bunch of different labels that I use in Gmail. So I've created this label and I've put z-dash just so it sorts it down to the bottom of the list.
+I just try and keep that list fairly tidy. And so I've got this label z-sam that automatically gets applied based on some filters that I've set up.
+In other words, an email coming from that email address maybe with this header. I'm sure you understand Gmail filters. So I'm going to use the power of built-in stuff in Gmail.
+I'm not going to try and write a script that scans through every single email looking for something from Sam. I'm going to use the power of Gmail first and then the script is looking for the label and that just keeps things needed.
+It's a little bit like we used named ranges in sheets earlier. It just keeps things tidy. And what I want it to do and where I started, again, I've iterated my way to the script you're going to see now.
+But what I started with is I just want to take every single one of these emails. And when I get an email come in, I want to add it to this sheet.
+And you can see all of the old emails from Sam here. So I want you to grab the date. I obviously I know who it's from, but let's put the from in here.
+The subject and then I did that's all I did for the first iteration just to prove that it would work And then once I got that working, I said well, let's extract the body because these emails that Sam writes are really long and You'll see if I dive into here look at that little scroll bar here It's a
+really long email. There's this gold living in every single one of Sam's emails They are absolutely fabulous, but they are huge, which is why they end up sitting in my inbox for ages Because I just don't always have the half hour to read them then and there So that's what we iterated away to again the
+code itself doesn't matter You just need to know okay How do I break this down into a small little test project?
+What's the littlest thing? I can do here. I've added a label to an email a single email can you go and find that label in my Gmail account and extract the date who it's from and the subject and put that into a sheet and just literally just describe that to your favorite AI ask it to build an apps script
+and then we'll go create that. So how you get into the apps script is go extensions and then apps script and that will open up this window.
+So we've got a few little files down the side here. We've got triggers, we've got the code editor, we've got project settings.
+I pretty much never use any of these because as you'll see we're going to have the AI right to the code to create triggers for us.
+Currently I don't have any triggers in here. So we're going to test this for the first time. So we'll go back to the code.
+What I have and it actually might be easier to read this in cursor. So I have a little configuration section so that you can add if you want to copy this and test something similar, you can add a label and then a folder.
+That's going to come in later on. This is one that I use all the time. So again, all you need to know here is just being able to ask the AI, hey, when I open the sheet for the first time, please add a little menu at the top that does these things.
+And again, you'll iterate there. You'll start with just create a menu and put one thing in there and then we'll iterate that over time.
+So all I've done so far is paste all of the script in here. It's going to do a bunch of stuff.
+I've saved it and then I go back to the sheet and press refresh. And then you'll see up here next to help that new menu item will appear in the second.
+So that's that on edit as soon as we go into the sheet, the script runs behind the scenes and it pops up my little thing here.
+So it's added a few options here. We've got extract emails and then I want to export. So after I had them all in here, I realized that sheets are a really horrible place to try and read this.
+If I wanted to read, I plan on giving all of this information to an AI. that'll be a future step of building the knowledge base.
+But I thought well it'd be nicer to have those each one of these as its own document. And so that was the next part of the script I created.
+And so here's that latest one here number one two five. So I've extracted them all as text documents and saved them in this folder.
+And hence the folder ID, this to one here, the folder ID in that config section at the top. All right, so let's just give it a bash.
+So if we go back into here, Gmail Processor, let's extract, and I've just noticed there's a new email coming in, all right, that's okay, that's just a GitHub one.
+So I've got three here, I'm expecting, one, two, six, one, two, seven, and one, two, eight, to flow through into my sheet, hopefully.
+Okay, we'll give it permissions. I realize that won't pop up on the video, but I'm just going to go in there and hit continue.
+I never know when you do the authorization if it's still running or not. Yeah, okay, it is. It's still running.
+So it's adding a new row. Beautiful. Well, almost. It didn't do one two. Oh, there we go. So it did one two six one two seven one two eight.
+It's now changed the order, but that's okay. because I can change that in a minute, I can just drag these and change them.
+And in future, when comes in, that'll go up to the top. So we'll get rid of those in a minute.
+And again, I could iterate on the script here to say, hey, once you've extracted these and brought them into the sheet, then file, oh, I did.
+it. Then file these and pop them down into here. I'm guessing if we refresh that, that inbox flag will disappear.
+And it's going to keep the label because I want all of those to stay grouped yet. So that inbox flag has disappeared.
+It just took a couple of seconds to flow through and they've been moved out of my inbox for me. Perfect.
+Now I've got these files and that was fine at the beginning but then what I added and iterated my way there was I want to export these but I want to keep track of what I've exported because when I export I don't want it to go through every single file again so therefore need to keep track of those so
+hopefully now it will just add three new files and export to drive text files and hoping it'll just do those three and won't try and do every single thing again we will see so if we go into here what we should find depending on which way up this is sorted there we go sorted at the top there we go great
+and that latest email has now been extracted turned into a text file these will be much easier to feed into an AI to use as a knowledge base later on that's why I've done text files, not Google Docs, so that multiple different AIs have no problem reading those and all I'll have to do
+later on is just point it to that folder and then I've got basically Sam's brain on tap. Now, it created those, did it do the next thing?
+Yes, it did great. It added those little ticks next to there. Now, the next thing we want to do is we want this whole thing to run automatically.
+So I'm going to tell it to set up that daily trigger. Now, I know that Sam only sends his emails once a week, but that's okay.
+I can just have this check once a day. Beautiful. So it's going to run at a.m. every day. And when we get to Sunday or Monday, whenever it runs after Sam has sent that, the labels being added automatically in Gmail.
+So then this will run, it'll pull everything through, it'll export as the text file, take it out of the inbox and everything just happens automatically.
+You'll just have to trust me that a week from now, next week, one, two, nine gets added to that. And if it doesn't, all I tend to do is I go back into extensions, I go back into Apps Group to remember we give the AI as much context as possible.
+I would copy this whole thing including my folder ID and so on. What have we got here? lines of code trivial for an AI.
+I'd give it all of that and then I would explain the problem and what I want to happen. This thing is processing every email every time or it's missing this or it's bringing it in but it's not exporting it to the folder.
+I just explain that to an AI, ask it to update the code, come back in here, delete all of this, paste in the new code, save it and then test it and run it again.
+and off to the races. So there you go, that's knowledge-based creation from an email newsletter. And we're starting to tie in a few things.
+We've got Gmail, Sheets, and Drive, and, well, sort of docs, but we've done it as a text file. So we've combined a few different things there, just in lines of code.
+So you could think about, I would suggest, if you'll see they're going great, but how do I use this? Have a conversation with your favorite AI.
+and so I've just learned about Google Apps scripts. I'm struggling to think of a use case where I could use this to practice.
+Help me brainstorm a simple short use case where something that I use Google Sheets for where we could use this.
+So maybe it's a new row gets added to a sheet and you want to send a message to a Slack channel.
+Try that. Or a new email comes in from a particular client. maybe you have a tab down here for each client and you just want to keep track of all of the emails that have come in because you're building a knowledge base or a project and you plan on taking those emails and passing them through to an application
+or a sana or click up or whatever it is that you use. So just pick one small thing if you can't think of anything at all brainstorm storm with your favorite AI, Claude, GPT-whatever you choose, and go back and forth with the AI to try and find something that you can use as a little test case, and 
+then it's just a case of iterating on that, because once you pick up these Lego pieces and play with it, and once you say, wow, oh, if I can do that, and that was so easy, what else could I do?
+What else could I do? And then you'll just keep on iterating from there, and have a play in here. Come into Google's thing and have a little play.
+Maybe you want to do this, maybe you want to add a little sidebar to Google Sheets, to help with keyword research, or to look through some data and make suggestions.
+I have no idea. This is the thing, right? Everybody uses this stuff so, so differently. But find a use case, have AI, write the code, have AI create the trigger for you, have AI create the menu item for you.
+These are so useful. You can have a whole bunch of these lined up across the top here and just have play experiment and see what you can build.
+I'll see you in the next video.

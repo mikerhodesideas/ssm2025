@@ -1,0 +1,90 @@
+Welcome back. In this module, we're gonna cover Google Sheets formulas. Now, how have we been doing this in the past?
+We probably would have spent a couple of hours at this point learning about or different formulas and then practicing them over and over again.
+Uh, I would have given you some sample Google Sheets and your homework would have been to use these formulas over and over again until it stuck in here.
+But in a world of ubiquitous AI, I can't don't see the point of that. What I think is far more important is that you understand what's possible and understand that Lego block and then be able to ask an AI, hey, I've got this vague memory of this Lego block.
+There's this query formula that I think would be really useful here. Please write the formula for me. Here's the detail that you need to understand.
+and here's the context that you need in order to write the formula, go write it for me please. And with a short little formula, as you'll see, sometimes it's worth just knowing it and writing it yourself and not having to rush off to AI every single time.
+But as your sheets get a bit more complicated as the formulas get more complicated, just asking AI to write it can be very, very easy.
+And Google, depending on which version of Google sheets, you have depending on how much you're paying Google to access Google Sheets basically which tier of Google workspace you're in.
+This may already be built into your Google Sheets, some of these formulas or the ability to ask AI to do stuff inside your sheet and remember today's the worst it's ever going to be.
+So Google's ability to work inside your sheet is only going to get better and better as they integrate Gemini into sheets more and more.
+But let's start by looking at just a few formula that understanding that these exist, just understanding what's possible makes life so much easier.
+So I'm going to work through a little example here to demonstrate these seven things. We've got four formula query unique import range.
+We'll use a separate example for that and array formula and then named ranges conditional formatting and data validation. So let's jump over to a Google sheet.
+And this is the data that we were playing with from before, we've just got campaign data, we've got it split out by day, and then just those five metrics that we were pulling before.
+Go away. Now query and unique first. So what I want to do is I want to create a new tab in my sheet here where I can choose a campaign from a drop down and then chart the cost by day.
+So the first thing I'm going to need in order to do that because right now I've got loads of campaign data in here and I don't want to create a different chart for every campaign.
+I want to dynamically change what's on the chart based on the campaign I choose. So we're going to need to do a couple of things here.
+We're going to want a tab where we have some sort of drop down over here and then some sort of chart over here where it's displaying cost over time.
+But the drop down is going to need to be a list of the campaigns. Now we can't obviously just say grab all of these and just because the name is repeated over and over.
+We need a unique list of names. So let's create another tab. Let's call this helper tab. And what we're going to do is use that unique formula.
+Now if I start typing unique and hit tab, it's going to fill that in for me. And I said I wanted a unique list of the campaign names.
+So let's highlight that whole column of campaigns and hit enter. And that's lovely. It's given me a list of the different campaign names, but it's also included the header.
+And if I'm going to put this into a drop down, I don't want the word campaign in there. So I'm just going to edit that formula to say, hey, don't start at the top of column being go all the way to the end.
+Start on the second row and go all the way to the end. And then I get rid of that campaign at the top there.
+Now the next thing we're going to do is add this drop down file. but for the drop down again I want that to be dynamic as well so if I'm going to create a drop down with this data validation I don't want to have to come over to data validation at a rule and then say campaign one and campaign two and 
+I can't even spell campaign and keep going like this because if somebody adds a new campaign or deletes a campaign, this list is going to be wrong.
+So I don't want to do that. Instead, what I want to do is to be able to add that list dynamically.
+And the only thing that sort of seems to make sense on here is this drop down from a range. But first, we need a range.
+Now, what we could do here is just say point this at our range, and say go over to the helper and grab everything in this column and that works.
+A slightly neater way would be to use name to ranges but we'll introduce name ranges in a minute. You can do either but for now we're just going to say drop down from a range and then point it to this range that we've defined first with the unique and you see it's it's smart.
+It's removed all of these blank rows. We haven't got loads and loads and loads of options on our drop-down. We can also change the colors of these if we want and choose a different color for each drop-down, but I'm not going to sit here and fiddle with that.
+Just make for good TV. Good enough. All right. Done. So now we go back to chart. Let's make this column a little bit wider, given our campaign names are a little bit wider.
+And drop-down is invalid because input must fall within the specified range because drop down isn't in our list over here.
+Now, what we could do is come into here and say, if the data is invalid, show a warning, but because it was on reject, we got that little red icon saying, no, you can't do that.
+If we say show a warning, yeah, if I refreshed it, we'd get a different error message there. It doesn't matter.
+And then we're not going to change the display start or good. We're just going to choose one of our campaigns from here.
+Great. Now, how on earth are we going to display just the cost over here for this campaign? Well, this is where things get a bit funky.
+So we will use a named range this time because I want to be able to refer to this sell the value of this drop down.
+I want to be able to refer to that in a formula that we're about to create using that query thing that we talked about before.
+So a named range can either be a range of sell or a single value. So it's easier to start with a single value.
+And there's a couple of ways that we can create this. We can either just pop a name into this name box over here or if this is closed.
+We can go to data and then named ranges. I'll get rid of that one. quickly we can create a named range and it says oh because your cursor is in cell BI'm guessing that's where you want to create this named range yes it is thank you very much and I'm going to call this selected campaign so that we can
+now refer to this named range and we could do that in a cell and we could say something like my campaign is and then I could start typing selected campaign and it pops up into I think you mean this.
+Yes it we do it enter and then it's gonna take the value of the range which is called selected campaign and insert it into our formula so that we something like this.
+Now we don't want to do that. We want some data. So let's read a new tab called data. And this is where we're going to use AI for the first time.
+And we're going to go over to chat GPT here and say, I have a new tab in my Google sheet called data.
+And I want to collect, I want to use the query formula. I don't know how to write it properly, but I want you to write a query formula for me to collect the date and cost data for my selected campaign.
+Which I'm going to chart later on on a different tab. I'll show you the data from my first sheet. It's on a tab called sheet one.
+I'll show you a little example of what that data looks like in a minute. And I want you to create this query formula for me.
+I've got a named range called selected campaign, and I only want to get the date and the cost data for rows that match my selected campaign.
+So I'm using a tool called Whisperflow to do this. I'm just going to change that because that will make a difference in our formula because as we're saying, my name brain is called this.
+I'm being very precise here. Everything else looks good. Sheet one actually doesn't have a space in. All good. And then let's say sample data.
+I'm gonna come over to here, grab a little bit of that data from the first sheet because showing, not telling.
+I could take a screenshot of this but I want it to really understand. Maybe there's some stuff here that it can't see in a screenshot.
+I want it to understand that these are numbers with decimals and these are integers and so that is usually going to be a Really useful thing to do.
+I'm often pasting sample data into an AI So that it understands what's going on now. Let's see if it can cope with that Got it if you had data is in sheet one name ranges this then here is the query formula that you want to use now rather than us spend half an hour learning the query formula I think 
+that's a better use of your time to know that there is something there that can what's query doing it's very very similar to that select from where thing that we had inside of our Google ads script let's go ahead and paste this in here and then Oh, that would help if I delete that and just put it in 
+a single cell, bingo, bingo. All right. Yeah, that'll do. It's there. It works. And then we're just going to have to trust that when we, What's the first line of that data, ?
+Right. So then when we choose a different campaign, our data changes. I was just thinking, do I put that on the same sheet?
+Well, I put that on the same sheet, then you can see it. I'll put it down here. Oh, done it again.
+Go into a single cell, paste it in front cell, and then you can see, as I change the drop down, my data is changing dynamically.
+And if I just delete that one cell, then all of that data disappears, because that one cell was creating all of those cells.
+So query is useful when we want to query, we want to get data from a place, and so this is very similar to the select from where.
+It's just that this time we're doing the from first, where are we getting data from, which things do we want to select?
+Well, it works out that columns A and E are date and cost because we gave it the sample data. So it was able to figure out where date and cost were and we said in that little blurb, I only want data, sorry, date and cost data.
+So it did that perfectly. And then where? So select from where, where B because B is campaign, where B equals selected campaign, but it knows the syntax of this.
+It knows that it needs a single quote, then a double quote, then an ampersand, then the thing, and then the reverse order of all that.
+Not fun to have to learn, right? But hey, I knows this. It's seen millions of these. So let's just use the ParaVai to do what it does best.
+Remember all the fiddly details so that we don't have to. Now we just want to chart the data from this data tap.
+So if we come back over to here and let's say insert a chart and it's going to say what type of chart do you want?
+Let's go a smooth line chart and what's your data range? Okay, let's come over here and say now we don't want that, we want columns A and B from data.
+Now yes, there's no data down here, but I think it will be smart enough to get rid of all of these blank cells for us, maybe.
+Then we just need to tidy this up. Our x axis is date. We want to remove date from here, and we've got cost on the sorry, yes, date across the x axis, cost on the y axis, and then it's plotting that for us.
+Lovely. Let's get rid of you. Let's get rid of you. So we can mess around with this as much as we like.
+I'm not going to go deep into charting here, because most of the stuff that we'll do in terms of data manipulation and data visualization, it's so much more powerful now to build a little tool that does that rather than doing all the work inside of Google Sheets.
+We'll cover that in later videos, maybe in a different course entirely. I cover this extensively in my build the agent course where we build tools like agent.
+I just I love the power of a tool like this. I've loaded this up with sample data so that you can have a play with it.
+You can see that I can yeah instantly. This is kind of doing the same thing that we're doing in Google Sheets, but it's able to do it just instantly.
+And when I have things like keywords, I've got this little keyword tree here. As I move the slider, the number of the keywords that match cost greater than $changes dynamically.
+Now you can't even have a slider in Google Sheets, never mind a tree visualization that changes as the slider moves or on my products page.
+I've got this little chart of products here. It's not going to work with sample data. I'll choose some real data and then as I move these thresholds, I've set it up so that my little image moves so that you have this little visualization so you'd have to picture it all in your head, but also the data
+changes automatically as I move this up, the number of products in each of these buckets is changing automatically, takes a second or two maybe, sometimes it happens live, just can't do this stuff in a Google sheet.
+So that's all in my build the agent course. So I'm not going to go deep into charts here, but I just want to, for now, illustrate that as we change, I really just want to illustrate the formulas at this point.
+And so while I'm changing this, the data is changing over here based on our formula with the selected campaign.
+So we've learned query, we've learned unique, we've learned named ranges all in the space of five minutes here. And so that as this changes, then our data that is charted changes because the data on our data tab is changing, but it's all coming from here.
+So we didn't have to get data from each campaign individually. And then as our script is running tomorrow, it's going to grab data for the last days, and so July the th will disappear, and there'll be a new row down here for August th that we'll get added.
+All of this will get cleared out, new data will get put in, but everything else is going to happen automatically, right?
+Our little list of campaigns is going to automatically get updated based on the data that is on this first sheet.
+If campaigns are removed, if new campaigns are added, our little unique formula is still going to work and that means this is still going to work because we said for the drop down go get all of the options for our drop down go get them from this column over on the helper tab so everything just works 
+but rather than this video are getting too long, we'll cover the other formula in a second video. Bye for now.

@@ -1,0 +1,45 @@
+Welcome back. Alright, let's dive into level two of our little script challenge now. Um, so again, we're not doing anything complicated at this point.
+The main thing really at this stage is just to get comfortable with copying and pasting, with changing scripts, with understanding logs.
+So we're gonna copy that code, again, we don't need to tick all of these things off. They're just there for the OCD types like me.
+And we go into Google Ads again. Now, we could create a new script every time for this. But again, it's easiest at this point, just to delete what we have, command A or control A to highlight everything and then delete and then paste in that new code from the clipboard.
+And again, now where's that preview button gone? You might be saying, because I've got this little section here that because I'm zoomed so far in, if I zoom out, you'll be able to see it.
+You can see it down in the bottom right hand corner there. But because I'm zoomed in to make this a bit more readable for you.
+I'm actually going to have to scroll down the screen to find that preview button. Again, we could press run. Maybe we'll do that anyway.
+We get this option to run without preview. Preview is generally a safer way to do it. I also find it more useful because I get to see those logs while things are running.
+But just so that you understand and what happens if you do hit run. Then we disappear off into the script history screen.
+You can see our script running there. You don't see any log for the previous time that we ran this because we just previewed it.
+We didn't actually run it, run it. And then we can click into the logs for this one, which is showing us exactly what we expect to the account name and the account ID.
+Now if we go back to here, Yep, I've run the code, is this what you saw? Yes, it is, wonderful, confetti time again, and we can jump through to the next level.
+So it doesn't really matter if you hit run or preview most of the time. I just think previewing is generally a better option for all those reasons that we've talked about.
+Okay, so another bit of code. We can copy that and then we'll go back delete all of that, paste that in.
+Now this time we're starting to think about the various metrics that we can pull out of an account, and this is going to grab metrics just for yesterday.
+So we'll preview that whenever we hit preview, it opens up with these options down the bottom here, and I always go across and click on to logs.
+I usually try and wind this up as far as possible, but again, because I'm zoomed so far into the screen I can't move that any further, but I'm getting impressions, clicks and cost.
+I can go back across to here and say, yep, I've run the code, did it look like this? Yes, it did.
+Fantastic. So now we get the idea that we can start to pull information about the account that we're in, and this is just for a single account for the time being okay.
+We're not going to talk about MCC yet, but we will get to that later on in this workshop. So let's go get some data for a different date range this time.
+So now we can copy the code, take it back across to here, delete all of that, paste the new one in, find the preview button, hit preview, and because we're putting this over the top of where we were before, we don't have to change to the log tab this time, it's already done for us.
+And so now we're starting to get the idea that okay there are a lot more metrics and we're not scratching the surface here.
+There's loads of different metrics that we could pull but we're just starting nice and simple here but we can change the date range that we get those metrics for.
+All right so far so good. We've done level four. Congratulations. So now we're getting into something a little bit more funky.
+We're going to save the data to a Google sheet. So it says copy the code and paste it into Google ads.
+So let's go do that first. Now this time before we hit run, let's just check with the rules here and see what we need to do.
+Click Preview and this time we're going to have to authorize the script. All right, let's try that. So we're going to click Preview and now because we're dealing with spreadsheets, because we're dealing with a different service.
+It's still a Google service, but it's a different service to Google ads. Ah, okay. I know what's happened here. You're not going to see the screen pop up because in this particular script, remember, I cheated and I didn't create a new script at the beginning.
+I put this over the top of an existing script, which I've already authorized, which is my bad. But rather than sort of show a whole, I don't want to show a whole bunch of scripts that are already in this particular account.
+So just know that when you go into scripts and you click that big blue plus button, if it's a new script that you've never authorized, when you try and preview or run that script, usually you're going to see a little authorize banner pop up, usually yellow.
+Sometimes it'll show across the top here. Sometimes you'll have to scroll down a little bit to see it right across the bottom here and you'll need to click authorize that O-auth screen pops up.
+It looks a little scary. It says something along the lines of this script could, it won't, but could make changes to your account and delete things in your account.
+And some people get freaked out by that. It's just a standard warning that Google show for every single script. They haven't actually read the contents of your script and determined what it can and can't do.
+I guess they don't want that liability, right? Google's run by lawyers. So they're putting up the big The scariest possible warning of all of the things that a script could possibly do, don't worry, we're going to cover that in a later video of being able to find out exactly what a particular script 
+is going to do using the power of AI. We'll get to that in a later video. So you can see here, it said that it has created a Google sheet for us.
+So if we copy that, open up a new tab and paste that in, we can open up the new tab.
+not super easy to see at this size but we have a bunch of metrics and we have a bunch of values so now great we know that we can send data to a Google sheet and it's just as quick as seeing that in the logs but we don't want to have to go back to the logs and check the logs every single time we don't
+want to have to keep going back to that place. Having data sent to a sheet, and obviously this created a new sheet for us, but as we'll see soon, we can send data to this same sheet every single time.
+So, let's come back into here and say yep, I've done that, did we see a sheet URL? Yes, we did, fantastic.
+We have finished level five, well done. Right, so now that we're getting to hang on this, we're going to do a slightly different way of getting data.
+So this time we're going to create three separate tabs in that Google sheet. So let's copy the code, go back into Google, highlight all of that code, delete it, and paste the new code in.
+And then we'll come down the bottom here again and hit preview. Now, what's going to happen this time, do you reckon?
+We're going to get a couple of seconds longer, and I reckon it's going to give us another sheet URL. But this time, we're running three separate queries, or three separate questions of our Google Ads data.
+So it's going to take it just at that little bit longer. Let me go back in here and tidy this up, get rid of that tab while we're waiting.
+Now this says, yep, okay, I've run the code. And again, it's going to say that we should see a URL pop up in the logs down here.

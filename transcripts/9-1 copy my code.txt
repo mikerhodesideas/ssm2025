@@ -1,0 +1,27 @@
+This thing here. This is called a repository in GitHub. So GitHub is slightly different from Git. Git is kind of like, um, track changes in a word document.
+Git Hub is basically Dropbox for all of your code. And so this repo, this repository, for scripts and sheets mastery contains this folder here with all of the various scripts that we have used throughout all of the modules.
+Now on that first page you're looking for this big green button and then under this HTTPS section this line of code we just need to copy that URL and then what we're going to do is make a copy of this whole repo, this repository, we're going to clone the repo.
+So now if we flick over to cursor, when you open a new window in cursor it looks like this you won't have this recent projects underneath, but you'll have these three options.
+Up until now, you've probably just used this open project every time you go in, you probably open the same project.
+As you build more and more different projects, you'll come in and choose which project to open or go into those recent ones.
+For now, we're going to clone the repo. Very easy. We just need to paste in that line that we got from GitHub.
+So github.com, microtideers, SSM git. And it's then going to ask us, where do we want to put that? Now I put all of my projects in the documents folder.
+So I'm going to say, yep, put it in here please. It's going to say great, I've done all that. Do you want to open?
+Yes please, open that. And now you have an exact copy of all of those files exactly the same as I had all of our four CS ones that we started with the apps script to take gmails into a sheet into a text doc we've got their health stuff we've got the MCC scripts from module whatever that was we've got
+the mega prompt from the last module negative. That's the negative keyword script that works with both MCC and single. We've got some endgrams, we've got those simple search term ones, and the readme that explains how to use all of these, or what all of these are at least.
+So now you've got all of that code to go play with. I highly recommend going through the videos and creating them from scratch yourself, but if you don't want to do that, you don't have time to do that.
+Now you've got a copy of all of this And one thing that you'll find as you do more and more with code or maybe you've got this big library of code here when you make a change.
+Let's just put a little space in there so that this file changes. It's now modified. I can now send all of my changes back up to GitHub.
+So I can just say read me updated and I typically do this commit and sync and then it will Load up all of the files from here locally on my computer and Go save them all so it won't be six minutes ago.
+It should say now if I refresh that There you go save all of those to get up So then if you want to share those with somebody else, please don't share these files with people that aren't in scripts and sheets mastery, but if you want to share this with yourself and make changes on one computer and then
+get those changes to the other computer, this is a really easy way to do that. You work on one computer, make all of the changes, you're working away during the week, maybe you want to work on your laptop at the weekend, so you save all of that up to GitHub.
+Everything in here then is the latest version, and then you go over to your laptop, copy that and clone the repo down onto your app top.
+Work on there, save all the files, push them back to GitHub, and on Monday morning when you go back to the office, pull everything down onto your other computer.
+That's a really easy way to move large chunks of code from one place to another. But this is kind of like the grown-up way to code.
+I have no idea what I'm doing in here. I'll usually have to ask the AI for help with this whenever anything goes wrong with this GitHub stuff.
+I'll just open up a new chat and ask it to fix it. Do that all the time. So if that was a bit confusing, don't worry.
+Just ask the AI, say, hey, I want to clone this repo. How do I do it? And it'll say, well, first thing I need is the URL.
+So find that, copy and paste it, give it to the AI, and then just follow your notes. You'll be fine.
+There you go. All of the code from the whole workshop. Good luck, play and when you get stuck, ask an AI, and when you're still stuck, come over to Circle and ask me.
+See you there, bye.
+Repo is https://github.com/mikerhodesideas/ssm2025

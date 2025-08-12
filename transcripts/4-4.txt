@@ -1,0 +1,108 @@
+Welcome back. In this module we're going to talk about how to deal with errors in Google ads scripts. Now the wonderful thing about Google ads scripts is that we have these logs down at the bottom and the logs are all in text.
+So it makes it very, very easy to just copy and paste even if they're quite long. Makes it very easy just to copy and paste these and then feed it back into the AI.
+So, what I've done to kick us off here is I've taken the script that we were using last time. I've just cleared out those long logs at the top just so that we can see the data more clearly.
+I've kept the bit of formatting that the AI created for us, haven't actually tested it yet. And I've taken that whole script with this blank spreadsheet URL at the top and I have I've pasted that directly into my Google ads test account here and hit preview and then moved from changes across to logs 
+so I can read the logs. And it's told us that it's created a new sheet for us. So what I'm going to do is copy that URL and then I'm going to put it into here just so that we're using the same sheet each time from here on, I'm also going to jump back into cursor quickly and paste it in there so that 
+when I copy and paste the script from cursor next time that is already done for me and remember we can't run Google ads scripts from cursor.
+It's a wonderful place to do these three things to store all of our scripts to make changes to them and to have a conversation with the AI and write scripts, build them, change them, tweak them But we can't run scripts from here.
+So we have to go back into Google ads in order to run the scripts So now that we've put the URL back into both places That's also pasted into a new tab so that we can see that sheet and indeed we have got the formatted first row And we've got these three columns with two decimal places exactly what we
+asked for fantastic Okay, so now let's create some errors on purpose So a very common one, let's do this one first.
+A very common one is that people will try and delete all of the gobbledygook at the end of the script, but they'll accidentally also delete that trailing slash.
+Remember in one of the earlier videos, I said how important it was not to do that. Well, let's try that.
+Let's just try copying that script as it is now, back into here. Remember, we're just going to delete all of the code that was there before, paste that in and hit go.
+Now we should get an error message. Some confusing gobbledygook about how the sheet isn't viewable. We couldn't open the spread sheet at this address.
+So what we can do is we can just take all of this, including the timestamps, doesn't matter, AI will figure it out.
+We copy that to the clipboard, jump back into cursor, and I will typically say something like got this error, please fix.
+That's pretty bad to all you're going to need. Most of the time that's going to be enough because we also have, and you can see it's got this one tab here.
+We've got this active tab. It knows in cursor that we are talking about this particular script, but just to be really clear what I might do is add that file again because last time it wanted to change all of our files so I'm being very clear that it's this particular script that we're interested in.
+I'm just going to zoom out a little bit here so we've got a bit more room to be able to see the script and more of the AI message which we just can't see when we zoomed in that much hopefully you can see this on whatever device you are looking at this video on and then we'll see what it says.
+I may switch to a different model in a minute because GPT-is trying to figure out how much thinking is involved in order to answer this question, do I need a quick model or do I need to think a bit longer and do I need to analyze and think harder about a problem.
+That's one of the benefits of GPT-which came out this morning. It is removing that complexity so that you don't have to try and figure out which of the different models available do I actually use, it will try and figure that out, but it is a bit slower.
+So we might just move to, well, just for the sake of something different, we can move to GPT fast, but I'm much more familiar with Claude Sonnet, which is a good, pretty cheap, pretty fast and pretty decent model, especially for anything to do with code.
+One of the other benefits of cursor here, we can choose from a whole bunch of models, we can add more, we can use the Google models, the open AI ones, Claude, as well as a whole raft of other models like DeepSeek and Quen and Grok and stacks of others.
+So you get to choose your model. Oh wow, okay. It's got a little bit above and beyond here, which AI will often do, because it loves creating code for you.
+So what it's doing now is it's basically running a test on the URL rather than just saying, hey, the URL's missing a slash on the end there.
+Well, I suppose to be fair to the AI, it doesn't necessarily know that that ID in there is valid. It just knows that the sheet couldn't be opened.
+But let's just keep all of the changes that it's suggesting. And just for fun, without even trying to read that, without trying to understand that, because most of the time I don't go and try, I just, this is how I validate the code that an AI writes.
+I just paste it into Google and hit go and see what happens. Now, it's not going to work because I don't think it's going to magically add that trailing slash for us.
+Oh my god, it did. I take it back. Okay, let's just double check that. Let's delete some of this data from the middle here and just make sure that it's not just making stuff up here.
+We go back, bang. Okay, so what it did then with this wonderful little new function. Remember last video, I said we can have different functions and so it's created a new function here that goes in if there is an error so it changed something down here as well to say hey try and use this sheet but if
+you get an error then go do something with this resolve spreadsheet ID function so go run this other function and do this with it whatever this means So let's take that and go this one, explain this code to me please, rather me try and explain it to you and show you how ignorant I am of JavaScript, let's
+have the AI do that. All right so how does it work? Well it's first going to see if there's any input at all apparently and if there's no spreadsheet URL that throws an error and otherwise it's going to do this little rejects thing it looks like it looks for characters long, at least characters
+long, and then probably tries a bunch of different ways to fix it. Ah, okay, right, so what it's doing is it's extracting the ID, so it's basically looking at this thing that was given to it, so then probably if we a loop.
+But if, yeah, if I have, I don't know, so maybe doing that will work. If I give it docs.google.com, maybe somebody thought, oh, I don't need all of the HTTP rubbish on the end.
+I just need to do this part, docs.google.com, it looks like it's looking for spreadsheets, D slash gobbledygook, and then turning it into the regular format, there's pretty clever.
+We didn't ask it to do that, but it managed to do it. There you go. So it will take this raw ID.
+Yeah, okay. So if I just give it the ID, then let's try that. Just give it the ID, and then I haven't deleted any of the code down the bottom here.
+I just folded it up to make the script easier to read. And let's try running that and see if it works.
+I'll delete all of that, throw that in and hit preview. So now I'm saying, hey, this is my spreadsheet URL.
+No, it's not. And see if it can. Yep. It's figured out, okay, I reckon that gobbledygook is an ID. So I'm going to put it into the proper format for a spreadsheet.
+And it has to make it work. I should. I had that to all of my scripts. And then I'll have less support to get to deal with.
+That's fantastic. All right. So there we go. Other errors. Let's create some other errors now. Sometimes when the AI writes code for you, let's get rid of this for a second, it writes code for you.
+Sometimes it gets most of the way there and then sometimes falls over just at the end. So maybe it's pretend that it's forgotten to add that last little curly bracket right at the end of our code there.
+You can see it, it's desperate to jump in there and fix it for us, but we're not going to let it.
+So we're going to say, let's copy all of this, we'll go back to Google ads, delete everything that we have so far, paste it all back in without the little curly bracket at the end and we're going to get a different error message down the bottom here.
+So To run this in preview because we get to see what's happening and this time No, we didn't get any log messages because the script just wasn't able to run it didn't even get that far But it did give us this syntax error Now let's pretend that we haven't actually seen that we could just let's take a
+screenshot of the whole page And I realized that you can't probably see me taking that screenshot, but take my word for it.
+I took a screenshot of the whole page. I'm going to go back over to the AI and I'm going to start a new chat so it can't cheat and look at the previous one, a paste screenshot in.
+And let's say I tried to run the script in Google ads, but it's just not running. I don't know why.
+So we're not going to give it any hints this time. I'm not going to say hey there there was an error and we're going to see if it can figure out that there's this little syntax error unexpected input line 
+Let's see what it can do with that. Screen shots can be really really useful because sometimes it's just easier to show a problem rather than trying to describe the problem to the AI.
+I forgot to tell it which script we were actually working with because I started that new chat but it's figured out I've got this window open so I probably mean this one which is fantastic.
+The main function was missing its closing brace on line and you can see it's added that curly bracket down the bottom here and now if I hit keep, of course we know this is going to work.
+But anyway, we'll just paste the whole thing in. There's the missing curly bracket. And now it'll take a few seconds and it will run.
+So it's really, really powerful. It's very, very hard to make a mistake. And there's really nothing to be afraid of.
+You get some code. It's very, very rare that a script, a Google ads script certainly is going to suddenly delete swathes of your actual account.
+Of course, if you're worried about that, you can always go and ask a different AI what's going to happen. I mean if you're really unsure of you don't know much about the place or the person that you've got this script from and you don't want to run it just yet you could do this in cursor but you could
+also do it in here. I'm about to run this Google script I was given in my Google ads account, will it change anything in my account?
+And then I usually put a little line of dashes and then paste the code in and hit go. And GPT-is going to tell me, I need to think a little longer because it's evaluating all of that code.
+It's not running the code, it's not running it in your Google ads account, it's basically just kind of running it in its brain, sorry to like, promoteize or whatever that word is.
+But here we go, short answer, I love that. Short answer, no, it won't change anything. And then it goes on to give us the long answer just in case we really want the long answer.
+So there's very little downside to just experimenting with code. So you can come into cursor or your favorite AI if you really don't want to use cursor, ask it to write a script.
+And that's what we'll cover in the next video, writing a script from scratch and then just running it and seeing if it works or not and if it doesn't work then we can add some error messages.
+We can add some logs. That's another thing we haven't done here but we could say because it's such a short script it's actually going to be quite hard.
+We can try. Let's try it. Add various debugging logs to the script so that you and I can find future errors more easily.
+We'll throw that in, and now I would expect it to write more of these logger.log messages throughout the script. So often you'll use these to work out where you are in a script, because okay, I'm up to here, I'm up to here, I'm up to here, I can see the logs as I run through each section of the script
+. And then when it falls over and you have an error, then you know, oh, it helps you identify which part of the script probably contains the error.
+You can also do things like logging the value of variables. I haven't gone into variables yet because we're not trying to learn to code here.
+But remember, even to start with this one, this is a type of variable. Spreadsheet URL is a thing. Think of it as a shoebox, as a bucket that holds some sort of value.
+So this bucket holds this value mav blah blah blah blah blah. And so we can and it's actually done that for us.
+It's logged at the top here. Hey, your URL is this. And if there's nothing in the bucket, this isn't or it says I'm either going to say to the user, hey, your bucket contains this or it'll say no your bucket's empty I'm going to create something for you.
+So let's just again smash the keep all button and this time run this code. That's quite a bit longer now we've got lines instead of lines what I'm expecting to see are a bunch more logs now there we go.
+So I'm starting your URL is this, you know it's only an ID but it doesn't matter. I'm going to open it.
+I couldn't open it so I figured it out and I worked out that this was the ID lovely and I opened it successfully and I cleared it successfully, lovely and I'm going to set up some headers now for you and I did an on and on and on.
+Probably a little bit too much but this This can be very, very useful, actually, I forgot to mention this. If you have it log, the first couple of rows of data, that can be hugely useful to help the AI understand the data that you're dealing with.
+Right now, everything worked pretty well the first time. We could have tried this. We could have tried to get some data that just isn't possible.
+Let's say, what would be a campaign thing that doesn't exist? Let's say campaign.budget. And I'll remember to put the comma on the end, so it doesn't throw a silly error.
+But I'm asking for a thing that doesn't exist now. So now, if we were to run this, and this will happen often with AI, AI will write code for you to try and find data that doesn't exist.
+Sorry, what I did there was just paste the new one over the top. So what I've been doing up until now is hitting command A, deleting everything, and then pasting in the new script.
+What I did just then was just highlight everything, and rather than do, I just pasted the new one over the top marginally quicker and saves me just in case I'm a keyboard.
+All right, so now if we run this we should get a different message and we can see look we're getting all of the logs that we got before.
+This bit's working, this bit's working, I'm up to here. So now the machine is going to understand, hey, the error happened after all of this and this is the type of error that we got.
+We got this unrecognized field campaign budget. Now again, it's a pretty short, simple script, it's only lines. My MCC pmax script just for comparison is about lines of code right now.
+So lines is nothing into schema things very easy for the AI to understand what's going on. But let's do what we did before.
+We're going to take this and rather than just copy this little error, if we take all of the logs that gives the AI a little bit more context, we have to see what's going on.
+We'll flick back into here and we say, I've got this error, please fix, and then hopefully it will figure out that you probably, it will do one of two things, Italy, the work out that campaign budget doesn't exist and delete it, or it might try and invent a new campaign budget.
+Now, it's figured out the invalid field, and I'm just going to delete that, which is why it's shown in red and when we say yes, keep this change, it's going to delete that line and now it should run absolutely fine because now we're back to the code that we had before and everything will just work.
+One last one for you what I will do is say this okay those logs are pretty excessive and you're just spamming the console log now please add a switch right at the top of the script where I can say debug logs on or off or true or false, whatever I need to say, and so I can turn those logs on and off so
+that I, once the script is working, I don't need to see all of those logs again, please. Now I hit go, so this can be very useful, right?
+Maybe you want to see the logs and you want the AI to see the logs while you're working on your script.
+But you don't want a user to then run your script and see all of this, all this stuff saying, I'm doing this now, I'm doing this.
+Yes, I managed to do it. Okay, great, carry on. I'm now doing this. That gets a little bit annoying after a while, right?
+It also slows things down because every time it has to write a new log, the script has to come out of what it's doing, come over to the screen, write something on the screen, go back to what it was doing.
+and so that slows it down marginally. And so what it's done now is it's created this little thing at top again, let's just, oh, it's still going.
+It's created this constant at the top here, debug logs equals false, set to true to enable detailed logging, perfect, exactly what we want.
+And then it's gonna come through and it's just changing all of these logs to say, hey, debug log do this thing, debug log do this thing.
+And they get this is calling a different function. So remember how we have these different functions, each function does a different thing.
+It's added a little comment to our function so that we and the AI could understand what's going on here. I know it's a bit hard to see because it keeps changing, but this is basically saying, hey, every time, and now instead of just logging every time, every time I've got a message, I want you to go 
+have a chat to the debug log function, and it will decide if we should show this message or not. And then debug simply says, hey, if debug logs is on, it's not.
+If it's on, log the message, if it's not, just ignore it and carry on. So then it jumps straight back into the next part of the code and carries on.
+So let's keep all of those. Let's keep that to false. Come back into here, I'll add everything, paste over the top.
+Hit go. and because debugs are false, in other words off, we don't get all that crap. Now we change that to true and hit go again.
+Now we should get all of the verbose explanation of what it's doing. So that can be a really useful trick for you to be able to debug things and then off the AI to be able to see everything and debug it.
+And then once you're ready to go rather than have to go through and delete logs from your code before you share it with someone or before you sell it, you can just change that little setting and you good to go.
+So that's error handling, logs, comments, in a nutshell, basically just get out there and try it. Go experiment. There's very little that can really go wrong.
+Just try it. Get it to write some code, make sure it's not making changes to campaign. It's not going to go delete a campaign or delete a bunch of keywords.
+I'll get to start with, and that's why we start with the four Cs. We start with checks and charting. We don't get to changes until later on.
+So we're really comfortable with working in code. We're not trying to make changes to the account. Start with just checking for alerts and pulling data out into a Google Sheet so that we can go play in Google Sheets and go create charts, create tables and do all that fun stuff which we'll do in a module
+very soon. Bye for now.

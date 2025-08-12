@@ -1,0 +1,55 @@
+Hey, welcome back. In this video, I want to talk about writing scripts using AI. Obviously the whole point of this workshop is to not try and learn JavaScript from scratch, but to use AI to help write our scripts.
+Now that doesn't mean that all of the thinking gets abdicated to the AI. It's on you to still figure out what you want the script to do, what data you want it to collect.
+and probably a little bit of what do you want to do with that data. The simplest form of script is just to log that data to the screen, to show that data on the screen, but that's probably not reusable.
+You probably don't just want to read it on the screen. You probably want to do something with it. And so generally putting that data into a Google sheet is usually the next step.
+Now you've been through the previous videos, you've gone through the script challenge, you understand the benefits of all of that.
+So our very simple script, we could maybe ask the AI to write a very simple Google ads script that collects search term data for the past seven days and outputs that to a Google sheet.
+And let's see how it does with a very simple prompt like that. Now, AI has improved massively over the last months.
+By the way, this setup here is an artifact in Claude.ai. So usually when Claude is writing code, it does this split screen approach, which I really, really like.
+You may need to just turn this on though in your settings. So just maybe in settings down here, just scroll down.
+Oh, they've moved it, I guess. Oh, well, I guess it's built in now. It used to be under Profile, used to have to scroll down and find a little setting here to turn, there you go, to turn that on.
+You apparently don't anymore. So ignore me, let's just go back to that. All right, so, click on the artifact and we get the code again.
+So at its very simplest, that will often get things right. In this particular case, it hasn't, how do I know that just by looking at it?
+You see this section, we didn't really go too deep into the whole sequel thing but you'll remember select from where, from one of the earlier videos.
+This from line is all in capitals. So I know that this is the old version of Google Scripts. Google updated everything about two, three years ago.
+So the problem is that the vast majority of examples that the AI has seen in its training data are the old versions of scripts.
+And so it'll often do something like this and create an old version, which is perfect, perfect because I've got the solution coming in a couple of videos time.
+My mega prompt is a big long prompt that we feed into the AI with loads of different examples built in to ensure that it doesn't do this exact thing is the crazy thing that will often work because Google are quite clever and they've made sure their scripts still work even for the old versions but for
+how long we don't know they may kill that off one day but for the most part it'll probably be okay it'll probably work but there's a few things that we could improve here.
+So you will have noticed before that one of the patterns I really like is if the user forgets to enter a sheet URL at the top that we create a script for the user as a sheet sorry for the user and then show them the URL of that new sheet in the locks.
+Now that obviously isn't going to happen by standard. We would have to ask for that and we can do that.
+We can prompt If the user forgets to enter a sheet URL, then create a sheet for them and show them the URL in a console log.
+Also, make sure that that sheet URL variable starts with just the two single quotes at the top, so that it's blank and easier for the user to paste in their sheet URL once they have one.
+Because otherwise to use this, we've got to go in here, get our cursor into the right place, highlight the right thing, delete that, and then paste Rin.
+I prefer it to start like that. But you'll notice that it made changes. We're now looking at version two up here.
+We can go back and find version one if we want. You can also, if you think it doesn't give you the right thing, you can just have it retry and either just quickly do a retry or have it think a little bit longer and then have another crack at it.
+So if the code you get for some reason you really don't like or it doesn't work, you can ask it to go again.
+But of course usually we won't know that just by looking at it. What we're going to do is copy that and go chuck it into an account here and then we'll see if it runs or not.
+That's the wonderful thing about code and why AI is getting so good at code is because it either runs or it doesn't and if it doesn't then we get the error back to AI and we just go round and around.
+So sorry what I did very quickly there was just highlight the existing script and then just paste the new one over the top.
+Let me slow that down. Highlight everything that's there and hit delete, copy the code from the AI and paste that in.
+But if you highlight everything and paste over the top, then your new script is there. Now, we don't have that, so hopefully we'll create a new script for us.
+Again, I'm going to hit Preview and then change to View the logs in here so that I can see what's happening while the script is running.
+Wonderful. This is great. We got an error. So it did create the sheet for us. So what I might do, oh, no, I won't copy that because I've got an error.
+So, what I really care about at this point is not what's on the sheet, but why did I get an error?
+So, what we would do at this point, thank you for messing up AI, is we're just going to copy that error, go back into here and say something like, got error.
+And we don't even have to say please fix, but, you know, for the sake of that, why not? Please fix.
+And it will go, oh yes of course, I forgot this thing and we need to do this and this is what we need to do differently.
+But you can see this sort of takes a little bit of time. So in a minute, we're going to do the same sort of thing in cursor and it's easier to make edits to existing code.
+This is a short script, and it's fairly easy for the AI just to go in and edit this artifact and create the new code.
+But sometimes it can get a bit confused, especially with longer scripts. and sometimes it just takes a long time to edit in this UI, whereas editing in cursor is much, much faster.
+But let's now take this code, come in here, highlight everything, and let's go again. And it should just take a few seconds because we're not asking for much data.
+What I probably should have done is instead of saying all search terms in the last seven days, I could have said where impressions are greater than that would have been a little bit faster to run Just while we're testing, but it only took seconds We've got rows and now if I take that URL
+Open that in a new tab Perfect, we see all the search terms And impressions clicks cost click through rate and cpc So now we can iterate so instead of trying to get everything perfect on the first attempt what we might now do is iterate because I don't really care about click-through rate and CBC yet
+. What I usually do is I get five metrics impressions, clicks, cost, conversions, and conversion value. And from those five things, I can calculate everything else.
+I can either calculate that in a sheet or I can get the script to do that for me, which is usually easier because we're not riding the code.
+We might as well have the AI do that for us So then we would just simply go back and say Let's add conversion and conversion value also add average order value return on ads bend CPA and conversion rate So those are the five Metrics that I always use and then those same six derived metrics that you can
+get from those first five and we'll see how it does it, even though it's using the old version of scripts, that hasn't mattered here, it has been able to go and get that data, it was still able to run quickly, it did what we wanted, it created the URL and logged that, there you go.
+That has now finished, now we're up to version we can still see all of the old versions in there, but let's just take this, chuck it in here and get rid of that.
+Now, what I will do this time is because it's already created a sheet for me, I will take that sheet URL and paste it in at the top of my script just so it doesn't keep creating a new sheet every time and fill up my Google Drive with a whole bunch of sheets that some point in the future I'm going to 
+have to go back and delete. I didn't ask it to do Impression is greater than so we're just going to have to wait a little bit longer for it to do all of that.
+It'll take a little bit longer this time because we're pulling a bit more data, but only a couple of seconds.
+And this time it didn't log the URL because it knows that we already put that in, and therefore we already know, and there we go.
+Perfect. Now, the only other thing I would typically do at this point is I would have it sort that data and typically I'll sort by impressions high to low or maybe cost high to low just to keep things tidy in here but we can worry about that another time.
+So that's a very very simple hey please can you create this script for me we had a couple of errors which is perfect in the next video we'll go into how we can minimize those errors and help the AI give us better output sooner.
+I'll see you in the next video.

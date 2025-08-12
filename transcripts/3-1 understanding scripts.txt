@@ -1,0 +1,107 @@
+G'day, Mike again. Alright, and this module, we're gonna try and understand our scripts a little bit. Now this is completely optional, but I found that the, the more you understand it a domain, the better you are at pulling the right information out of an AI.
+So just understanding a little bit about a script, what makes up a script, what the different parts of the script are, will help you have better conversations with an AI, help you prompt better, help you spot mistakes, better because AI is a long way from perfect, right?
+And it will make mistakes. So we're going to jump into cursor, which I showed you in the last module, just because it's more colorful and it's easier to see the different areas of what's going on.
+And I've loaded up all of the scripts from cs. Remember we covered that in the last video. You can grab those at ADagent.com slash cs.
+I've just saved them all as just new file. So I just came into here, created a new file, named it, saved the code.
+I put that .js on the end. That tells cursor, hey, this is a JavaScript file that we're working with. And so format it based on the fact that it's JavaScript.
+If we don't have that and it thinks it's just a text file, then everything's going to be all one color, all in gray.
+Not very exciting. Okay, not that scripts are that exciting. Okay, so first thing that we notice is that we have this constant spreadsheet URL.
+So just like the practice scripts that we played with in the very first module, all of those from the scary challenge.
+We have some sort of constant at the top here and we can put our URL in there and as you can see from the comment here these two slashes say this is a comment ignore everything after this please computer on this line.
+We can either add in a sheet URL here or we can leave it blank and a new one will be created for us and of course we know how to find And that URL now we just need to look in the logs at the bottom of the screen in Google ads.
+And then we have this function main. So all, let me make it a bit bigger for you. All Google ads scripts will have this function main at a minimum.
+They have to have this main function. That's the thing that runs when we run a script, we run this main function.
+And you can see I've got these little chevrons here in cursor. You won't find these if you're looking in Google ads and trying to edit code in Google ads, but I can fold up That main and I see that is Basically the entirety of this script.
+We'll look at another one in a minute, which has different functions all the way through And that can be just very useful when you're Maybe writing or more likely editing code because you're probably going to use the AI to do most of the writing for you But then you might want to go in and just tweak
+some things edit Double check what the AI is doing. Maybe that feels like a long way off at this point because you've never coded a thing totally fine.
+But as you ask AI to do more and more of this, asking the AI to explain why it did something, asking it to explain a piece of code.
+Grabbing someone else's script, one of mine or one that you find on LinkedIn, paste that in and say, hey, what does this script do?
+Explain these sections to me. It can be a really useful thing to do. And so the main thing I want to point out here is that we have a bunch of comments in the code.
+So again, if you're trying to learn how to code, these can be really useful. And you can ask the AI to write these for you.
+So whether it does it automatically the first time, or not, you could just come into here. Remember, this is the AI is built into cursor.
+So we're not having to copy and paste all of this out to chat GBT, do something with it and bring it back.
+I've got GPT-running inside cursor here, and I could just simply say add more comments to the code. It helps us to read the code and to understand the code, very, very useful if you're ever going to collaborate with somebody on one of your scripts.
+Maybe you work at a large agency and you've got lots of people that would love to be able to use these scripts but they want to change it a little bit for them.
+Having comments throughout the code helps everybody in that situation. But of course, it also helps the AI to understand the code itself so that when you're asking the AI to make changes to your code, it's better able to make changes because it's reading this through as language.
+It's not but it's not trying to interpret this. It's literally acting like a code would do and sitting here kind of reading through from top to bottom and the more you can do to help the AI understand your code, the better that's probably going to be.
+Now I rather stupidly here have sent this off on a little later and now and it's making changes to all four of the scripts.
+So it might take a little bit longer than I was planning on, but we'll let that run. So comments are really good to understand code, both for you and for the AI.
+Now the other big thing that you can use are those logs. And we'll talk more about this in the debugging module.
+But we can ask the AI to add more logs. So that's lines that look like this logger.log or console.log. These are the little messages that get shown to us, the user, in that screen down the bottom of Google ads.
+And they help us see what's happening and see what's going on. But when we're trying to fix errors, adding more logs to the script is really, really useful for the AI to understand what happened when we run this script.
+Oh, wow. Okay. So it's added lots and lots and lots of comments here. I might just stop that where it is.
+And I'll keep those changes that I can always undo them later. So it's added this big comment at the top here with the purpose and the setup and the notes And then saying like okay, this is the entry point And that's pretty much what it's done.
+If we had more functions It would have added a comment at the top of each function explaining what each function does That's you may have heard this term functional programming That's essentially one of these you you break a problem down you break your code down into the sort of It's not the smallest
+possible steps, but into small chunks. And then each chunk does one thing well, kind of like a good landing page, right?
+Each function does one thing well, and then the functions talk to each other and pass information backwards and forwards so that you're not sort of lumping all of this logic into one place and asking something to do too much.
+It's easier for us to understand that way, or this function does this one thing, it's easier for the AI to understand as well.
+And then just a couple of little things that I'll point out through here that will be useful and completely optional, but useful to know, good little tricks.
+What we're doing here is we've got this try, try basically we're saying try doing all of this. And if it doesn't work, then catch the error.
+So that rather than just an error happening and the screen stops, the script stops running and it can't do anything else and you just get this error message, instead it sort of fails more gracefully, if you like.
+And then says, oh, hey, I got this error over here. In this particular situation, it's not gonna make a lot of difference.
+But many times you can do this in such a way such that the script keeps running. So it's trying to do something if it doesn't work.
+Hey, not a problem. I'll show this error message to the user and then try it and keep going. So rather than just falling over and failing.
+We also have in here some conditional logic. Maybe you've used conditional formatting in a Google sheet before. If this, then that.
+If this thing is in a cell, then make it bright red. Well, this is the same sort of thing here.
+We have this little if statement saying if there is no spreadsheet, then do this thing. In other words, build a new spreadsheet until the user what the new spreadsheet is.
+or keep going with the one that the user has provided. And then we're clearing out the sheet, getting rid of any old data, building our headers in here, sticking those at the top of the sheet.
+And then comes the bit where we're actually trying to get some data out of Google ads. And that formatting seems to have got a bit messed up.
+Never mind. Can't help myself. off. That's better. So what we're doing here. I made a video on SQL because SQL is one of those kind of scary looking things but it really isn't that bad.
+There's basically just three words that you need to know. Select from and where. And this is, you do this all the time.
+When you open up Google ads, you look at, you pick, first of all, which thing I want to look at, am I looking at campaigns, which is what we're looking at here, from campaign, am I looking at keywords, am I looking at ads?
+So what you do first is figure out where you want to look at data from. In this case, from campaign.
+So this is exactly the same as going into the interface and going campaigns, campaigns, campaigns, because we have click it three times now and choosing the campaign data.
+Then select is basically like let's choose the columns that I want to see in the table in front of me so I want date, campaign name and then a few metrics.
+And I always get these five pretty much as a minimum every single time because from these five I can calculate basically everything else that I need.
+Click through rate, conversion rate, average order value row as CPA. I can figure out all of those from these five metrics.
+The only other two you might particularly want are all conversions and all conversion value. If you're doing something with secondary conversions at a campaign level, you might want impression share metrics.
+I'll show you in a later video where you can find the list of all of the metrics that are are available for each thing that you want data for.
+So in this case, the thing is campaigns. We're going to collect these columns, this data, and then we have a bit of a condition at the bottom here.
+And again, this is exactly like in Google Ads, where you choose the date range. And you choose those dropdowns saying, do I want all campaigns do I want, or active and paused, or enabled and paused or do I want just enabled?
+And here we're just saying, yeah, I just want the enabled ones, please. And I want the last days. Now again, there are things that you can say in here and things that you can't.
+The AI will often try and write last days. That doesn't exist. There is no thing that you can put in here saying last days, you can calculate a little sentence for the code that basically says from this date to this date.
+I'll show you that later about how you can, I'll give you a little function later on that you pass in a number like and it spits back the little sentence that you need.
+But otherwise you can use last days, last seven days, yesterday, those will be the common ones that you use, but just know that last days does not exist, you have to create that little sentence.
+And then just to finish off here, what this is then doing. So we're creating this query. So this is a SQL query and we're saying go collect this data from this place with this criteria please.
+And it does that and it goes and grabs a whole bunch of rows. And then we're saying right, while you still have rows start at the top and while you still have rows please work through each row.
+And so it's going and grabbing the little bits of information from here it's going and grabbing the date from this first row and then the campaign name and then this and it's basically creating like a little row of its own data so it's taking the stuff out of Google and it's turning it into something
+that it can work with and while it's doing that sometimes we'll transform data while we're grabbing it and so cost rather confusingly in the Google system is in millions of a dollars but millions of a thing, millions of a euro, millions of a pound.
+Try saying that three times quickly. Millions of a dollar in my case. And so it's called cost micros. So maybe you've run a script before you pulled some data and you go, whoa, I am not spending million dollars.
+Ah, okay, it's actually dollars. Got it. But it's presented with basically six decimal places. So one million equals one dollar.
+And so we have to divide by a million to get it back to the regular number that we're used to seeing.
+Bazaarly, conversion value is not in micros. So you don't need to divide that one by a billion, but this will catch people out sometimes.
+So if you're trying to figure out CPC and you end up seeing a CPC of two million, that's okay. Just remember you have to tell the AI, no, we need to divide this number by a million because it's in micros.
+That's the technical. term. So we're doing that, and then we're just looping through all of our rows, and we're building this little thing called data.
+It's technically called an array, but it doesn't matter, we can just call it a thing. Then when we get to the end, if our thing actually has something in it, if it's longer than zero, then go stick that into the Google sheet as well, please.
+So we've already put our headers in up here. That's what this did. We are setting the values of row one was saying stick these things and we've defined headers here and then we're saying stick all of that in row one please.
+Now loop through until you haven't got anywhere else to go and then assuming that you've got some data then stick that in the spreadsheet starting on row two stick that underneath the headers and then send a little message to the user saying, awesome, I have sent this many rows off to the Google sheet
+. And then if there's no spreadsheet, then send another message saying, I haven't got a spreadsheet and I've created this, otherwise we're all good.
+And then if there are any errors, show the error message to the user and then stop. So that's the basic concept here.
+Again, you don't need to know it in any great detail. But the more you get familiar with the layout, with the concepts, I've just knowing what's possible.
+Knowing, for instance, that we could, I mean the glasses for this one, we could format this data in the sheet.
+Now, every time we have a chat to a spreadsheet, every time we use this set values or talk to spreadsheets, so here we're clearing the data, so that's one, here we're writing the headers, that's two, and down here we're doing this in one big lump, we're collecting all the data, and we're sending all 
+of that data in one big lump. Sometimes the AI will do this row by row, so it'll read a row of data and then try and send that row of data off to the sheet, and then come back and read another row, and then send another row after that's incredibly inefficient because every time we chat to the sheet, 
+it just takes time. And remember, we have this -minute time limit with scripts that we cannot go past, so we have to be efficient where we can be, and doing all of this in one big lump is a better way to do it.
+But having sent all of that data, what we could do is we could, let's say, um, make a bit of room here, we could bold the first row, you've got a few options for doing that because we're in cursor here, we can tell it to do things and it'll just magically do it.
+So one way you could do that would be to write a comment. And if we say, bold, the header row, and when I hit enter down to the next line, it understands what it is that I want.
+And all I've got to do is hit the tab key and that line of code has been written for me.
+And it's basically saying go to the sheet, get that first row and set it to bold. Now, what if we want to do something a bit more complicated?
+What if we want to format this? While we've got impressions and clicks, they're probably going to be integers. But these numbers are all going to have loads of decimal places.
+So what if we didn't want that? Let's just say, actually, I'm going to record it, because I barely type anything anymore.
+I tend to just use, I use a tool called Whisperflow, we'll talk about that later, go to roads.ai. If you want to get $worth of credits for that, but I tend to use Whisperflow for everything now, so format, cost, conversions, and conversion value to two decimal places.
+Now, I'm doing that, as I comment, you can see I haven't even hit Enter yet, and it's already writing it for me.
+And again, I'm just going to hit tab. And because those three columns are together, it's able to do it in again, one big lump.
+It's basically saying start here and carry on for three columns. And all of those numbers, let's format that to two decimal places.
+Because I've got AI in here, I could also do that in here. So let's be lazy and copy my comment and delete that and come over to here, start a new chat with the AI, paste that in and see what it does.
+Now I'm using GPT-so it's going to have a bit of a think, it's going to plan, it's going to reason, it's going to write itself a little to do list, maybe, oh God.
+And it's going to do it for all four scripts, which is not what I want, so I'm going to stop that in and then I can add the particular file that I want it to work with so where are we for CS chart this so I'm gonna say just in this particular file please format these three things to two decimal places
+and hopefully it'll put something similar in down here it might even write the comment for us it might put it further down, we'll see.
+But we can use the AI, so rather than copying all of this over to chat GPT and then writing what you want and then fiddly copying and pasting and bringing that back, or usually what you would do at that point, you wouldn't be using Curse, so you'd be pasting that straight into Google ads.
+And then if there's a problem, you gotta go back to the AI, you've got to sometimes it won't even write the full script for you.
+It'll just say, hey, on this line, find this and change it to that. And that's a real pain to do.
+And it takes my longer versus just doing the whole thing in here. So it said it's done everything. I'm just going to believe it.
+I'm going to keep. And the reason I'm just believing it is because when we run the code, we'll find out if it runs or it doesn't.
+But we'll cover that in a video in a moment of how to deal with those errors that come up because code has got this wonderful quality.
+I need it runs or it doesn't, and if it doesn't run, we're going to get some sort of error message from somewhere.
+We tell the AI what the error is and we ask the AI to fix the code for us and that will usually do a very, very good job of that.
+All right, that's it for this one. So that was an overview of scripts in the next one. Let's talk about error messages and how to deal with errors.

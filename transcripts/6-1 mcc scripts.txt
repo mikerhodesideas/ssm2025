@@ -1,0 +1,55 @@
+Hey, Mike here again. In this module, we're gonna cover MCC scripts. Super powerful, super useful. The huge benefit really being that you install a script once in that top level of your MCC, and then that logic can run across all of the accounts within that MCC, or just the ones that you choose.
+But it means that one, you only have to install a script once, and it can run across everything. If that script needs to change or be updated, you only have to make one change instead of potentially hundreds.
+But also, as per the first bullet here, the owners of those accounts can't see the script that's running on that account.
+Great for audits. If you can add someone's account to your MCC, you can have your audit script ready and waiting.
+Run it on that new account, spit out your page report or whatever it is, all of the tabs in a sheet that you use for a look or report.
+However, you do your audit, all of that can be done in just a few minutes because the script is ready and waiting.
+But the owner of that account can't see your script, they can't steal your script just because they've been linked to your MCC.
+So incredibly useful, a great way to scale the work that you do. Now, not saying that scripts can replace humans nowhere near it, but there are so many tasks that they can help your team with why not do that across every single account so that when your team need the data in order to do a task even if
+they do that task once a week. You run the script every day and the data is just there ready for them whenever they happen to need it.
+It's scripts are free to run. it's so powerful just to have that everything done proactively just to be there ready and waiting.
+So we're going to focus on reporting. We're focused, we're going to use the example of conversion actions and being able to grab the conversion action data for all of the accounts in an MCC, a script that you could run hourly or daily.
+But we're going to do it in three different ways. So if we jump across into cursor, let's talk about the first way, but I want to give you three different Lego blocks, essentially three different ways of doing this, to get progressively a little bit more complicated maybe, but progressively more powerful
+because again, you're not trying to learn how to write JavaScript, we just need to know what the Lego bricks are so that we can ask the AI to create the script for us.
+So a couple of little things I want to point out, first of all, the config of the top here, the configuration.
+What I will typically do is leave the sheet URL blank. If the user leaves it blank, a sheet gets created and we show them that in the logs, but then we expect that they will take that URL and put it into the script for run number two, run number three, et cetera, so that we use that sheet from then on
+. But if they forget, if they don't want to produce it in there the first time, the script isn't going to fall over again.
+If there's any kind of mistake by the user, we want the script to fail gracefully or preferably not fail at all.
+Now when we're setting up and testing an MCC, it might take -minutes to run an MCC script if it has to iterate over hundreds of accounts.
+We don't want to have to wait minutes just to find out that there's an error in the code. So, I will typically have this sort of line at the top where we can have one or two accounts that we enter to use for testing purposes, just to check that the logic is all working.
+And then once it is, we'll remove those two CIDs. If this string is blank, then it runs across all accounts.
+same sort of thing. We don't want to pick some long time frame. And again, therefore, I have to wait longer because more data means slower scripts means writing more data to sheets, which is going to take longer.
+So I'll typically start with a short time frame. And then if you want, you can add a longer time frame later.
+You can't have last days. I've said this before, but the AI loves creating last underscore underscore days, which is impossible and won't work.
+But you could easily have a function here that creates the code in order to pull data for a longer time period.
+That can be a great little homework project for you. Just ask the AI to create that. For you paste this script in, tell it what you want, and it'll give you a new script.
+And then lastly, we have the sheet name, or the tab name, that we're going to create inside of our Google sheet.
+Now the last little bit to look at here is just this main function. So essentially what we're doing is saying, hey, the account that this script is installed in.
+Is it actually an MCC account? If it is, great. Let's carry on doing what we intended to do, but if this has accidentally been installed into a single account, not an MCC, then let's do this other thing.
+And rather, again, rather than just fall over and fail and have a big red error message, it's going to carry on and do the thing, in this case grab conversion data, it's going to just do that thing for the single account.
+So I use this exact same logic in my negative keyword script, which I'm going to show you a little bit later on.
+Put the same thing happens there so that you can run the same script in either type of account and it works perfectly for both.
+So let's take this code, jump over into an MCC, clear that out and hit preview. Again, we have not entered a sheet URL yet, and so we should get a message saying that one is being created for us.
+There we go, created new spreadsheet, new spreadsheet created, and it gives us that URL. And then we can see that we're running in test mode because we entered a couple of CIDs, so let's open up that sheet.
+We've got sheet one here, and then daily conversion data. Now I have for the purposes of this video just replaced the account name with dummy name for filming for both accounts here, but you can see I've got and down here we've got and then we have which I will just cover up that as well
+. We have some different conversion action names. You just have to take my word for it that this column D is the conversion action name and so for each day for each account we have the various conversion action names and the various Conversions that are the various metric, the number of conversions that
+each one has received. Now, in this particular case, I'm using all conversions, so just know that there is a difference in scripts between all conversions and conversions, I probably should have named that column differently.
+Actually, let me show you how to do that. Why not? Let's dive into here. Let's search for conversions, and here we go.
+So we could just change that to all conversions and then next time this script runs, we'll have a slightly better named column.
+So now let's also take the URL. This is what we would do next, take the URL and go and plug that into the sheet URL and then remove our test IDs because this only took seconds to run for a couple of them.
+I would then hit Preview and then I would leave this running, expecting it to take a couple of minutes. There are a couple of hundred accounts in here.
+Again, I've removed the account names, but now it's going to run through all of the accounts in this MCC exactly what we wanted and once it's done doing that, it will clear the sheet which is already done and then it will paste all of the data in one hit into the sheet.
+The reason we want it to paste in in one hit is because scripts will run quite slowly if it's just writing one line at a time into your sheet because every time it has to have a chat with the sheet, that takes time.
+And especially with an MCC script, we have to be aware of the execution time of our script. We don't want to be writing a line that going back and finding some more data and then going back and writing some more because we have that minute time limit, we want our script to run as efficiently as possible
+. So worth remembering that so that you can ask your AI to make sure that we optimize for the execution time of the script.
+Let's write this script in a smart way such that we are not wasting time and one of the ways I like to do that is just collect all of the data that we're going to write to the sheet.
+Essentially we tell it to collect all of that data in memory, and then once it's collected everything, then go right to the sheet.
+So I have no idea how many accounts are in here, but I'll just pause this for a moment and then we'll come back once the data is written to the sheet.
+Okay, the script has finished running now. We've got rows of data written to the sheet, so it ran through all of the accounts, took two and a half minutes and just reminded us at the bottom here of that sheet URL you can see that matches and then over here we have all of our different accounts 
+all of those different metrics and if we scroll down rows so I will remove that dummy if we search for dummy you can see that I changed the account name from the name it's fetched from the Google ads account and replaced it with this account name, dummy name, filming.
+So if we comment that line out, it now won't change the name from whatever the name is to dummy name, and that name will get used in the processing.
+So I don't imagine that you need that line, but I'll leave that there as a comment just to help remind you what we did.
+I'm going to end this video here before this gets too long and then the next one will come back with a different way of doing it.
+So here we've got one huge tab with all of the account data all in one big long list. Now that's one way of doing it but if we wanted to get a more complicated data than this we might need some different ways of doing it.
+So in the next video what we'll do is we will look at creating a tab for each account and then the third one will do something even more powerful but a little bit more complicated.
+We'll get to that. I'll see you in the next video.

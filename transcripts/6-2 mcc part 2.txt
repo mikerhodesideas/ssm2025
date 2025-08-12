@@ -1,0 +1,59 @@
+Welcome back. Alright, MCC Part What we're gonna do now is look at a slightly different Lego Blick, Lego Blick, Lego Blick or Blick.
+You choose. Um, a different pattern for getting your MCC data out into a sheet. So this time we're gonna put the data for each account into a separate tab, but all into one spreadsheet.
+So usual patterns, usual configuration, uh, We have a sheet URL, which if it's blank, we're going to create one for them.
+We've got a couple of CIDs for testing, short time period, a slightly different pattern here as well, just as an alternative to the CID for testing, which is if you, or once you remove the two accounts here for testing, maybe you only want to get accounts above a certain threshold during whichever time
+period we have set. so if you've got hundreds and hundreds of accounts in your MCC, you can come in here, set that to or or any number you choose, and then it'll only create tabs for the accounts that hit that threshold, and then tab naming, which I'll talk about in just a second.
+Now, I've already placed this into the account because I need to hide some data here, and we'll dive directly into the sheet.
+So I'm just graying out the names of the accounts there and just keeping this hidden. By default, the column names are automatically resized to the conversion action name, but that conversion action name reveals a bit too much.
+So I've just made that column a little bit smaller us a rather than run the script again, which will resize the column.
+I've just made a couple of changes here. And then what it's going to do is for each account, it's going to create this index page for us at the beginning of the sheet so that we can click on that and come directly to the tab.
+Because if you have, again, hundreds of tabs, it might be a little bit challenging to find those. I use a tool that helps me sort all of the tabs by Alphanumeric order.
+That might be useful. It could be another thing we could add to the script. But I'm using the CID as the tab name here.
+What that other constant at the top does, this tab naming constant, is if you set use account name to be true, it will use the account name for each of the tabs.
+Now I see two potential problems with that one account names are usually longer than the CID and I don't like really long tab names because it means I can only see you know maybe two three four tabs on the screen at a time whereas with the CID I can probably see almost a dozen tabs there but the other
+thing is what happens when the name changes the name is just an attribute of what is current right now if somebody changes the name of the account then you're going to end up with two tabs, one with the old name and the old data and then one with the new data since the name changed and that would be 
+a bit of a pain to try and put those together whereas the CID never changes and so typically I will use data that never changes.
+I'll use campaign IDs instead of campaign names, account IDs instead of account names. And generally just means less trouble with the code.
+So that's another way of doing it. And if we jump back into cursor, I have a third way of doing it.
+And I've given you a cut down version here, but I'm also going to give you my negative keyword sheet. So this, I sell for bucks, I think.
+You'll see this one is quite long. This is about and lines of code almost exactly yours to take and play with and change that does a ton of stuff but what I wanted to give you from it was the the pattern so rather than give you three thousand lines of code and say feed this into an AI good luck 
+I've created a cut down version of that for you usual patterns here sheet URL blank selected time seven days to start with but This time we've got two different taps.
+So we'll grab that and get it running, chuck it into the account. And then if I need to, I'll pause the video and hide the data on there.
+But what this is gonna do is create a master sheet. So if you've used my PMAX script, or maybe my negative keyword script that you're gonna get, it does a couple of things.
+on the first run it populates the all tab the all accounts tab in this case sometimes I call it just all in this case all accounts something along this line and that is a list of all of the accounts in the MCC typically sorted by cost in descending order in other words high to low the reason for that
+is that I don't want you to have to go into Google ads and copy and paste and type out out the digit CID to set up the configuration.
+I want to make that as easy as possible for you. You want to do the same. You want your scripts to be easy to use by the end user.
+And so as we'll see in a minute, we're going to get a list of all of those accounts, CIDs, names, and for context, the spend in the last days.
+Just so I have a vague understanding of which accounts might be more important than others. Then what we do, and this is exactly the same if you've used my PMax script, we then copy the CIDs and the names of the accounts that we want the script to run on across into the Settings tab.
+Okay, the script has gone across. That has now finished running. It took about a minute for accounts here and it created a new sheet, which I've opened in a new tab.
+Again, and I've just grayed out that list of client names because we've got the cost shown next to them. And so she won, we can get rid of.
+We don't need that anymore. And we've got two tabs. We've got that all accounts tab, which is the list of everything.
+And then settings, which is the bit that we're interested in, essentially. So if we go down here, grab a couple of these and paste them into settings.
+let me just wind that up first and set that so that it doesn't show and then paste that in there.
+Of course, it's still going to show, isn't it? Now, if we run the script again, it's probably going to show the names anyway in there.
+But what should happen now in our Mastersheet? For each account that it finds, it's going to create a spreadsheet with the data that we wanted for each account and then put the link to that spreadsheet in here, our account URL cell in here and a timestamp for when that last run happened, excuse me, and
+the status. So as this runs through and creates the Now, exactly the same pattern that I use for the PMACs and you'll see when you run the negative keyword script in here as well, it's exactly the same pattern.
+This just obviously does a lot more stuff and is a bit more complicated. But this is really useful if you want lots of different types of data for each account.
+So maybe you want a tab for keyword data or a tab for search terms, a tab for placements, etc. etc, etc, etc.
+So very, very similar to how works. If you've logged in for it does the same thing. It creates a sheet for each account and there are about tabs also for each account and then that data gets read into 
+It uses a very, very similar system to this. So that's just another pattern, another way of doing it. So we've covered three things.
+We've got one that was the simple version. That was just a single tab with all of the data and the single tab.
+So it listed the account CID and account name, and then the data that we wanted. We could then do some interesting things with that data.
+We didn't for the sake of time here, but we could chart that data. We could pull it into the app.
+We could run a large language model over the top of that and look for changes, chart out the data so we can spot when conversions have fallen off a cliff.
+That's really the point of all of this, probably should have said that earlier, is by having all of this data, then we can do some interesting stuff with it so that we can spot where maybe some conversion code has been deleted and conversions drop down to zero for a particular conversion action so we
+can spot those things nice and early. Now, our second one, we had multiple tabs in a single sheet. So one tab per account, either using the CID or using the account name.
+And then in this last one, we're then creating a different sheet for each individual client. Ah, I made a mistake, didn't I?
+I didn't, having done all of that fun stuff, you know what I should have done? I should have taken this URL and thrown that into the top of the sheet.
+It looks like that'll take about another minute. So I'll do that now rather than have to change everything and gray it out and do everything that we did over in this master sheet.
+I didn't send it back to the same place and so it then ran through and created the all accounts tab again, but in a different sheet because I'm an idiot and didn't put that URL in there.
+So there you go. It's created that seconds. It's done both of those beautiful and created a sheet for each one with the date stamp.
+So it's really quick. Once you get it up and running, this is the slow bit to go through and grab the data for every single account.
+But then once you've got, I mean, maybe you want to run the sheet on all of them in which case you copy all of that, maybe the whole thing across to the settings tab.
+And then we have some other patterns of dealing with that again. If you've used my PMAC script, you'll know that then I have an additional column, which is called run at.
+And so then I tell it which hour of the day to update a particular account, but we'll leave that for another day.
+We shouldn't need that here. But now you've got a whole bunch of different ways of dealing with MCCs. The way I'm expecting you to use these three scripts I've given you is give whichever pattern you like for your particular use case, give one of these scripts to an AI and say using this as the base,
+I want to do blah blah blah blah blah blah. Please write the new script for me and give me the new script and then you're off to the races, and you've got something decent to copy to give the AI as a starting point, which should save you a whole lot of pain.
+But more importantly, you've got a few different Lego blocks in your head now, different things that you can ask the AI for, because you know a bunch of different ways of what's possible.
+That's the key thing. Is knowing what's possible, knowing what to ask for. You don't have to remember how to write any of this code.
+You're never going to write the code. You just need to ask for the right thing. I'll see you in the next video.

@@ -1,0 +1,87 @@
+Welcome back. So, in this video I want to talk about the different AI models you can use and some of the pros and cons of each of those.
+So if we dive back into our search term script that we created in the last video, I got up to version here.
+Um, if I make changes as you saw before, the artifact, this thing over here on the right hand side, tries to, it tries to edit that artifact.
+It tries to sort of rather than write the whole script again from scratch, it tries to edit what's already there.
+Chaggity is going to do a similar thing, so if we say create a simple Google ad script to get search terms for the past seven days, only get those that have at least impressions.
+use version of the API. Send the data to a Google ads, sorry, to a Google sheet. Have a sheet URL constant at the top of the script if the user doesn't enter a URL, create a sheet for them, and log the URL to the console, otherwise use the sheet provided by the user.
+the last thing. Sort the data by impressions high to low before sending the data to the sheet. So let's see what GBDthinking comes up with.
+Now, I had it set to five thinking from a previous use of GPT-You could quite easily use GPT-as well.
+The benefit of GPT-being, it tries to decide how much thinking to do based on what you have asked for.
+Depending on the complexity of what you're asking for, GPT-instead of having to use all of the different models that you had to choose between, GPT-does that smart routing for you and tries to figure out which version behind the scenes to send the code too.
+So we'll see what that comes up with. Meanwhile, what I've done is taken this script from Claude and pasted it into cursor that we were using earlier if you remember.
+Because what I prefer to do now is to have the AI I'll just create a new window in a new chat over here.
+Rather than copy and paste and wait for those edits, I prefer to bring everything in cursor because I have my library of all of my scripts saved over here.
+And I'm gonna show you at the end of the workshop how to get a copy of all of these scripts by just pasting in a line of code into cursor.
+So you can get to copy all of these a rather than copy and paste them individually one by one from the place where I storm the code for this course, you'll be able to copy the whole lot in one go.
+And then in here, I can have a chat with the AI based upon what we are looking at. So because I've got this tab open, it's automatically added it to my chat.
+It knows what I'm talking about. So if I say change this so that we are getting search terms with more than impressions in the last days and hit go.
+So I'm expecting it to make changes down here, but I can see the changes that it makes. So I'll be able to see which lines it's deleting, which lines it's adding, or which lines it's changing.
+And I can prefer being able to keep an eye on what it's doing. So there we go. You can see it's greater than last days.
+It looks like that's the only changes that it made or there's another change all the way down here. Let's scroll down.
+Here we go. Nice. So it does the little things like that. So no search term data found for the past days rather than the past seven days.
+Lovely. And then if I want to keep those changes, I can just say keep. There we go. Okay, now let's try something a little harder for the AI.
+Let's ask it to grab three different types of data and put that data into three different tabs in our sheet, so now I want you to change the script and have three additional variables at the top of the script.
+For three different tabs, we're going to have a campaigns tab, keywords and search terms. Use lowercase names for the tabs with no spaces.
+So for the campaigns, I want you to get all campaign data from enabled campaigns for the last days. For the keywords, I want you to get all keyword data for all keywords that have any impressions at all in the last days even if they've since been paused and then for search terms we'll keep that
+as it is impressions greater than for the last days and I want obviously the data from each of those three resources to go to the appropriate tab.
+So I'm again using whisper flow to dictate all of this I just find I can get more context out faster by dictating rather than typing so we'll hit go on there.
+Now, I know what you might be thinking. I wouldn't know to ask for that. I don't know that I want tab names at the top of the script.
+I don't know that I want them in lowercase yet. Why do you want them in lowercase? So that's just my preferences that have built up over time.
+So the more you do this, the more scripts you create by talking to your computer, the more you kind of learn the little things that you like it to do, that maybe it doesn't do out of the box, it doesn't do by standard.
+And so I've just learned how I like to do those things and learned how to talk to the AI. Now what I should have done before starting any of this, which was really daft of me, what I should have done is copy and paste this file.
+So I should have created a new copy of that file, called it version two, and then asked the AI to work on version two so that I could give you at the end of this when I give you all of the code, I could give you this as well as the original so that you can compare and contrast those two.
+They can see it, did that pretty quickly. It's telling me over the side here, all the things it's done, but critically compared to this interface back in Claude, I can see what's happening.
+So, I could and how I started and if you want to learn any JavaScript at all, if you want to improve your knowledge over JavaScript about JavaScript, I would recommend reading through these changes, trying to understand what it is the AI is doing and go through and say, yep, okay, I'll keep that.
+That may seem like a long way off at this point, but the more you do it, the more things you'll pick up and the more you'll learn.
+So you can learn a great deal instead of the way I learned the code way back in the day where I would learn about if statements and variables and loops and having to learn the basic sort of theory of coding and that sometimes goes on for like six months before you actually get to do anything interesting
+whereas here we're flipping it we're creating the interesting thing we're having the AI write the code and then we can learn by going through that code and understanding what it does to speed things up.
+I'm just going to say keep everything. But if I wanted to, I could highlight a little bit of code here.
+And then copy that over to the side here and say explain this bit. If you want to learn, this is a great way to understand what's going on.
+And then it just tells you in simple language what this power code does. And if that really doesn't make sense, you can say, explain it like I'm five, ELI five.
+And so it'll use even simpler language. So that little cheat code ELI five or ELI or whatever number you want, it understands, oh, okay.
+You want me to explain this to you like you're a five year old. And so you can see pause the video if you want.
+It's basically turned all of that into toy collections and sock drawers. Okay. So that's high search terms. Now what I will do is rename this Vand I will quickly copy and paste that and go back to my original and we'll copy the code from Claude and throw that into the original one here.
+Okay, so it doesn't have my URL in, which is great, but that was the original. And then let's also create another file in here, search terms chatgpt.
+Now I always put the .js on the end. That tells cursor that this is a JavaScript file, which just helps with the formatting of that.
+And so we'll come over to here now and grab, before I forget, grab all of that code from gbtand paste that into here.
+Number of funky little things in here. Now we should probably check before I give you a copy of this code.
+We should probably check that this one actually works. So let's go in and see if that works. And see if we get any errors on this one.
+Again, we've got a blank optional sheet, which is fantastic. great we've got an error so we can now take that error and we can do a couple of things we could either because we've now got that code in cursor we could try and fix it here and or we could go back over to here and just say error whoops I 
+hit Enter too early for that time if you want to create a blank line obviously I'm getting you know this already, but just hit shift enter.
+I messed up and didn't press shift enter, so I'm just going to come out of that and hit go. In cursor, I'm going to have cursor see if it can fix that error as well.
+But rather than have it sort of get stuck in this, explain it like I'm five mentality, I don't want it to try and fix the script following on from that.
+I want to clean that out, start a new chat. So just like we would in, say, Claude, we would come over and hit the new chat button.
+The way we do that in cursor is to click this little plus sign at the top of the AI agent section.
+And that starts a new chat. You can see my old chats across the top here. And I can say error.
+What was the error I got? Copy that error back into here. again you could say please fix these days AI is smart enough to be able to figure out I probably don't even need to type no I don't need to type error colon above that if I just paste the error message in it's usually gonna get it correct but 
+it is important rather than just try and figure out which bit of this maybe it needs like maybe we could just get away with telling it that or reading the error message using our dictation app.
+Usually with Google ads scripts because they're all text logs. The easiest thing to do is copy and paste all of the logs, paste it back.
+Excuse me, into the AI and see what it is able to do. So it's made the changes already. We'll say keep that and we'll test that.
+So you've probably heard the phrase writing is editing. Coding is debugging, even when you're using an AI. So it's good that we're getting a couple of errors here, so you can see exactly how I do it, which is throw the error in, ask it to change the code, go back over to Google ads, highlight all that
+, delete it, paste it in, and hit preview again. So we just go around this loop two or three times. Usually that is all it takes.
+If you find yourself going around the loop five or six times, it's probably a more serious error. At that case, just abandon it and start again, but there you go.
+It fixed it first time. We've got rows. Now, let's see if JGBT was able to fix things. So it had a little think here.
+And this is the difference with OpenAI. It then writes out all that code again. And again, for a short little script like this, it's not a problem.
+But later on, when your script start getting longer and longer and longer. It is a real pain to have to wait for the AI to write out a thousand lines of code or what it will do is just give you a little snippet and I will say, hey, find function main blah blah blah blah, find this thing in your code 
+and take this and remove that and put this bit in instead. And that is quite painful to do, especially if you're only writing code in the Google ads interface, trying to find, see, we can't fold up this code, we can't easily search through this code for a particular thing.
+If I search for in it, it may be highlighted, but it often won't take me directly to that, some things it will and some things it won't.
+It's just painful to edit inside of here. Whereas doing all of that inside of a tool like cursor just makes life much much easier.
+Plus, we have a record of all of our scripts as we go. So we've got all the different versions. This is why the PMAC script is up to version at the time of recording because this is exactly how I did it.
+I would come in for the next day and the new ideas I had, I would come into version two copy and paste.
+So I'm literally just Command C, Command V. Rename that Vcopy to VStart a new conversation. And then ask for the changes that I wanted to V
+Go around a couple of times, fix things, maybe tweak something in the sheet. And then I'd have VAnd then the next bunch of changes, VV
+And so I use that naming convention all the time in cursor. It's a really handy way just to keep all of the different versions and play with those.
+So let's just see, just for the sake of completeness, if ChatGbT was able to solve this. So I'm expecting rows of data if it's fixed it the same way that cursor did.
+And if we get something vastly different, then we know we've got two very different things. Oh, this one isn't going to tell us how many rows, but let's just quickly edit that, open that sheet in a different tab here, write, no data.
+So chat GBD has failed miserably at this point. I'm kind of not surprised by that. Now I'm not going to go round and round around trying to fix this error at this point, but let's just, let's get rid of V
+We don't need that. Let's find, so that was this one. So I should, actually, but let's not save that. I don't want to confuse you by giving you code that doesn't work, but let's check that this Vcode does work, because I'm assuming that it does, but we'd never actually checked that.
+We did get logs, so it looked like something ran, but we never actually went to the sheet and visually confirmed that we had the data in there, which is a useful pattern to get into.
+I mean usually I would do that and it does look like it's writing data to different tabs and so on, so it's probably correct, but it is always a good idea just to, especially if you want to then go do something with the data, just visually confirm that you have got data in all the right places.
+So there we go. Curse that one, and got everything right first time. Thank you, Curse. So I think Curse is a better place to create code, but again, if you're just going to copy and paste someone else's scripts, and that's good enough for you and maybe occasionally make a tiny edit, then claw.ai
+, maybe chat GBT will be good enough. You don't need certainly don't need to spend money on cursor. $a month for the pro plan.
+For me, it's a huge bargain, but if you're only spending five minutes a week on scripts, please don't spend the money on cursor.
+You could just as easily save all of your scripts in Google Drive or Dropbox or whatever it is that you use personally.
+I spend a lot of time playing with scripts and automation so for me it's really handy to have it in here and to have my library of scripts to have all of the code in the middle here and then have AI right in here so that everything is in the same place and all together and I can choose to use different
+models if I want I can use GPT-called Gemini Pro, I get to choose which AI I want to use if I care that much you might pay a little bit more that way.
+If you leave it on auto, you know you're only going to spend bucks a month. In the next video, we'll talk a bit more about debugging code and error tracking.
+I'll see you there. Bye.

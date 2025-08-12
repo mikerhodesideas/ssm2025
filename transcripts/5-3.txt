@@ -1,0 +1,69 @@
+Hey, welcome back. Alright, let's look at the import range formula. So the reason that you would use this formula is to move large chunks of data from one sheet to another sheet.
+And one use case where this is really useful is in my Pmax sheet. So the Pmax script, obviously powers a Pmax sheet.
+Um, there is a tab there called ID. So So maybe you've played with this, maybe you haven't, but this ends up giving you a two columns, a list of product IDs, and then the bucket that that fits into.
+So I have these six buckets, profitable costly flukes, meh, zombies, and zero conversions. Now this is very similar to a script that came out after I created this.
+They didn't see it. I didn't see theirs. They didn't copy. I didn't copy just to be clear. but you've probably heard of it.
+You maybe use it, FlowBoost's laborlizer script. It's really, really good. It is definitely a more grown up version than this.
+It's more powerful and it does this one thing very, very, very well. But my script is a version of that.
+So I have these product categories. Should tidy that up in the mind. I have these product categories and a certain number of products in each category based on recent data.
+Not going to explain that here, but I want to now create a supplemental feed. I want to use this data, this list of IDs, and the buckets they're in.
+I want to use that as a supplemental feed in Merchant Center to add these labels as a custom label. So if we do a quick search for custom label, we You can see that custom labels, sometimes called custom dimension, we have these options and it's kind of weird, right, because we have five labels you would
+think but no, is done by geeks and so it's from through So the first label is custom label 
+So what I've done is because we're not trying to remember these formula, here's one I prepared earlier. I've just rambled for five seconds this time instead of seconds and I've just said I've got some data and I want to use import range out.
+I've got this thing in the back of my brain that tells me I want to use import range to move to copy this data from one sheet to another.
+I want to put it into a new sheet and I want to call the first column ID but I know I can't call this this second column bucket because Google Merchant Center isn't going to understand what bucket means.
+I want the second column to be called custom label zero. How do I do it? All right, let's see what the AI suggests.
+So you can't rename columns directly, but we can wrap it in the query. Okay, well, I was gonna do this manually, but sure, let's do the thing that it is saying here.
+How I would have done this first is to first create a new sheet. And then use import range. As I start to type, it should.
+I hate the way sometimes it just doesn't work in that first cell. Let's go import range. And then it's going to ask me for two separate things, a spreadsheet URL and a range.
+Well, the spreadsheet URL is easy, right? That's just this thing. I'm going to, again, keep all the gobbledygook on the end.
+I'm not going to try and tidy it up and be fancy. But this tells me if I look at this, that I need to wrap this in quotes.
+I remember that, maybe you don't, in which case it won't work, the first time, and then you'll remember. But I've got this range, and then I have to do a comma, I have to do a range string, what a hell is a range string?
+Well the range string is just saying which tab are you getting it from? And which range do you want? This is the range up here in the name box.
+So, if I highlight these cells, it's from cell Adown to cell BWell, I want the whole thing, which is this.
+So, it's all of A up until the end of all of B. And it's on the tab called ID. So, I go back to my new thing and now it's difficult to see because this is in the way.
+But I've got my import range. I've got my URL wrapped in quotes. And then I'm I have another quote and say it's on tab ID.
+I have to put an exclamation mark in between the tab name and the range. I'm gonna say A through B, close quotes, go.
+I'm gonna sneakily delete those top two rows and pretend that we put this in the top here. So I will typically bold that and move that down, change my column width a little bit so I can see what's going on.
+And the reason I move that down there, that's going to freeze a certain number of rows. Ah, I didn't mean to do that, I moved the wrong thing.
+That's going to freeze a certain number of rows. It's the same as going up to view, freeze, and I want to change that to one row so that as I scroll down, my headers stay where they are.
+I'm sure you've used that before, but if not, you can either use the thing under view freeze rows or you can grab try and get that little hand icon back you can grab these sort of slightly thicker gray things here you can drag this one across here so that as you scroll across these ones stay fixed and
+this one you grab and bring down to then your header stays fixed as you scroll sorry that was a tangent you really didn't need to know all that did you maybe it's useful maybe it's not.
+Now, what I would have done is I would have brought that in and then worked out that I want to change the name of this column.
+But if I do that, my formula breaks. So then I've got to figure out, oh, actually, I wanted to bring in everything from row two down.
+And that's when things get a little bit messy. I would actually have to go back into my formula I would have to find this.
+I'd have to say let's grab everything from a to down to the end of b. Then I would actually have to move this formula down to here because I need it to start in row two.
+Stay with me. Stay with me. And this one I was going to call id and this one I was going to call custom label zero.
+That's the slow way of doing it. That's We've done it, that's how I've always done it in the past. So, let's see what ChatGbDrecommends.
+It says, right, you can't do that. As we've just seen, if we try and change the column name, either manually or try to do it with import range, it's not gonna work.
+But this is now combining import range together with query that we covered in an earlier video and try to do everything all in one go.
+So let's just try this. and it says to go put this into cell one and the original tab is called PMax performance and nope the original tab is called id all capitals id.
+I love whisper flow. So did you notice that then where I said it's called id all capitals id it didn't just do the dictation thing of put that exactly as I said it it used some smarts in the background to understand what I was saying and why I was saying that and just paste in the original tab it's called
+ID this is why I love whisper flow it's so good okay so now it's changed it and it's changed the formula based on that new information so now if we copy this into cell Aover here I've done it again haven't I double-click into cell one so that I paste the formula into cell Aand hit go.
+Nah, spreadsheet cannot be found. Oh, I didn't give it my spreadsheet. I'm an idiot. Okay, I've said this in a different video.
+Context is everything and since I actually didn't tell it that the URL of my spreadsheet, it made this up. I didn't even notice.
+Oh, dear, one idea. All right, sheet URL is that. Maybe I'll just change that to say original sheet URL is that so that now it can change the whole thing for me.
+Oh, it's different, okay. So I usually put the full URL in, but what it has done is it's taken the ID out of here, which is this part here and apparently this will work with just IDs which is a little bit neater and not quite as messy to look at.
+So let's delete that, let's go again, double-click into there, paste that in and bingo, bingo. So now we have ID and custom label, help if I didn't bold that bit from before and bold the headers.
+Perfect, that's exactly what we wanted but now we've done it all with just this single command, or the single formula, combining a couple of other formulas.
+So again, another great example of why we don't want to have to try and remember all of this gobbledygook through here, select column one, select column two, but label it, the column one labeled this and column two labeled that.
+I'm never going to remember that syntax. Maybe you will, I don't know, maybe if you do better than me, if you do.
+But we don't need to remember. We just need to describe, with context, text and telling the URL, telling the ID tab, these little details, definitely help AI.
+But once it has all the information that it needs, it creates the formula correct first time. And it's all done.
+And now we can use this, so we could name this. Now what's going to happen is whenever this thing runs again, and it would have put So tomorrow the script has run, the data has changed, the data in the supplemental feed and sheet obviously changes automatically and instantly.
+As soon as it changes on that other tab, it changes instantly in here and then this is the tab that we could then upload to Google Merchant Center and say, right, grab all of the information from here.
+I'm not going to go into how to do that now. I'm sure if this is a useful thing for you, you will figure it out.
+Maybe you're already doing something similar, but that's how you can automatically move a large chunk of data from one sheet to another sheet automatically.
+And apparently change the column headers while you're doing it by using query as well. Never done that before. Obviously you have to get the names of that column headers right and that's why I'm just doing a quick search for something like custom label just to make sure we get the syntax exactly right
+. The other thing we could have done is copy that URL and made that part of the context so that we could have said, you know, how are we going to do that?
+Custom label one, you know, get the detail for custom labels from this website. Please read the website and make sure that you format things properly because maybe we didn't remember that they had underscores or maybe we didn't remember that it was zero to four.
+So I want the second column to be called a custom label. And we gave it that and said, read this.
+Let's just try it again. I haven't put the URL in there. I haven't put the ID thing in there. It didn't do a very good job of that.
+But sometimes Sometimes it will, sometimes it won't, there you go, check GPT-That's why you should use Claude, I reckon.
+Anyway, there we go. That's all of your sheet formulas that you're going to need to know. Those named ranges come in very, very handy when you're trying to move data from a sheet into your code and back again, particularly useful for something like once we're getting outside the sheets, put your
+going from a script into a sheet and you're pushing data between the two, the script can change the value of named ranges in your sheet.
+So it can actually send data into the sheet and put it in a specific place based on where that name ranges.
+I'll give you some use cases for that later on, but very, very useful to use named ranges, rather than trying to remember, was it cell For Gor did somebody move that?
+So using named ranges super useful but those are really all the formula that you need to know at this point really don't need any more than that just remember those Lego blocks remember what the thing is that you want to do and if you don't remember the formula just describe to the AI hey I've got this
+idea I think I know what I want to do is there a formula that does this thing and just hold down the button only keyboard, install whisper flow, hold the button down, and a ramble for seconds, and more often than not, the AI will sort it out.
+I'll see you in the next video.

@@ -1,0 +1,47 @@
+We'll jump over to Kerser and you can see from this that it is, there's a lot of text here Now you've got a couple of options with this If you hate Kerser and you don't want to ever go near Kerser ever again, then what you could do is just copy all of that out of Kerser, jump back into Claude or your
+favourite AI and let's say, uh, write a short Google ads script to fetch search terms, use the document below for inspiration and ideas.
+So let's just put that in and then I'm going to paste that in as one big document and hit go.
+So that will probably work okay. Yes, I've got some notes in this particular megaprompt that is prompting me just to make sure that things don't go wrong.
+So let's go to that search term view page that we looked at before and actually I will change version here, version before we give that to the UI, to the AI.
+We'll copy that and we'll put that in there. So resource is that. Date range, yes, used the last days, segmentation.
+I'd like the data segmented by campaign and segmented by date so that I can chart this later. Let's sort it by date.
+And with the sheet URL, no, I don't have an existing URL put a sheet constant at the top. If the user forgets to enter a sheet, then create one for them and show them the URL in the logs, otherwise use the sheet that the user gives you.
+So clearly I need to work on the examples in the mega prompt, having just used that as the example that I told you.
+It did the same thing. Right, so it's first going to have a little read so that it understands this search term view.
+If I hadn't entered that, or if you didn't know which resource to use, you could say to it, look, just guess.
+use your big brain and figure something out and guess and then it's gone off and decided here's all the stuff it should do and we've got our main, we've got some calculated metrics and it's often running.
+Now we could do the same thing over in let me just close this so it doesn't get confused. We could do the same thing in cursor here.
+And you've got a couple of options. I would often create a new blank, let's call it test.js, a new blank script first.
+Just to make sure that it uses that document, that script file for the new script, rather than risk it messing up on a my existing scripts just to be really, really precise.
+And we do the same thing in here. Write a new simple Google ads script using the examples provided and create this new script in the test.js file.
+And you'll notice that the audio that I'm using whisper flow, get a roadster AI, actually does things with file names as well.
+So what I'm going to do here though, because I wanted to show you the other way of doing this. You can do it using voice, but if you don't have whisper flow using the examples provided in.
+And then if we just add mega prompt, you can attach a file to your prompt. And so this is another benefit of doing all of this in cursor.
+You've got your library of all of your scripts. Maybe you could say look at this other script of mine for ideas if you didn't have the mega prompt.
+Instead of trying to find it every time, find it in Google Drive or over your story documents, download it, and then go paste it into Claude in cursor, everything is right there.
+And then if this script doesn't work first time, it's also going to be faster and easier to edit this in here rather than come back into here and wait for it to either write the script again or try and edit or tell us which bits to edit.
+Now I'm not going to run those tests. We know that search terms is a pretty easy option for the AI to do.
+Let's see how this one's going. Okay, so very similar. Hey, yes, so this one did do it without asking as many questions.
+It's got the sheet URL top. If a URL isn't provided, create one. So I'm going to keep on that. looks very, very similar calculated metrics, it just guessed last days.
+Oh that's one thing that we haven't done yet. I haven't shown you a way to do date ranges. All right, so let's try this.
+Perfect. Let's make the date range more flexible. Have a constant at the top where the user can enter a number of days and then create a new function to create.
+the code necessary and insert that into the query to get whichever date range the user wants. So the reason I'm trying to say it like that is to show you that you don't need to know exactly what you're talking about.
+It's quite okay to say to the eye, I have no idea what I'm doing. Please can you do something like this for me?
+I'm trying really hard not to use technical terms not to use jargon so that you can see that the AI will usually figure it out and if it doesn't, well we'll just test it, get an error and we'll try again and usually it only takes two or three off those.
+So, okay that's an interesting way to do it. What it's going to do now is we've got a number of days at the top here and it's basically going to insert this line of text in here.
+But it's going to work that out at this point. So it's saying, I'm going to put a bunch of text in here.
+But just before we put the text in, hey, just run over here to this function, get date range and figure out how we actually format that and then grab the answer and return this back up into here.
+I'm not going to test that right now. You don't need to see me testing more things. That looks like it'll probably work.
+what I would prefer to do, oh, there we go, it is getting the time zone. So it's getting the time zone from our existing account to make sure that it formats that correctly and it does the time that in our time zone, which is perfect.
+So that looks really good to me. So you can use this pattern, this function over and over again, you can either copy that into other scripts or you could just know that that's my one here.
+You just need to say something like that. Let's make it more flexible. Please do this. Create a new function that does this.
+This is kind of what I think I want. Or like just say, I want the option of making this run over days or days.
+How do we do that? That will work too. So that's the mega prompt. Lots and lots of examples. One way I suggest you use this is as you build new examples and new test scripts, keep adding them to the examples at the bottom here.
+And that's very easy to do, right? Let's, in fact, let's do it. Great, add the test.js file you just created, add that as a new example to the end of the Megaprompt.
+There you go, look at that. And it even added that file for me, lovely. So rather than us have to copy and paste examples in, just get in the habit of asking the AI to do stuff for you.
+Whenever I have text that needs formatting, I'll just ask the AI to do it or something that needs to be moved.
+I'm now starting to, this is going to be a whole other course, talking about Claude code and how I use Claude code in cursor.
+But I'm starting to use Claude code to manipulate files on my computer. So we can look at all of those SAM emails that we looked at and grab information from there or use Information from somewhere else in my computer pull all of that in use that as context in order to solve a business problem This so
+much that we can do once you start exploring the rooms in that scary house start understanding how the Lego blocks work and The only way to figure that out is just to go play So go play, go experiment, go have fun, and when you get stuck, come and ping me in circle.
+So come over to microbes.circle.so, weird URL, I know. And then come into this, members only ask questions section, put a post in there and just ping me on that, just at me says that I will see that I'm just trying to work out what I'm in here as I think yeah just you'll figure it out you're smart ping
+me on there ask a question but just go have fun experiment and go build yeah

@@ -1,0 +1,35 @@
+Okay, Mike Rhodes here, welcome to scripts and sheets mastery Delighted to have you here. Um, in the coming videos, we're going to cover quite a bit of ground.
+But let's start at the beginning. Why learn scripts? Why in would you want to or ? Would you want to learn scripts?
+Well, I've got a few reasons for you here. Um, it's mostly going to be about automating repetitive manual work. There is absolutely no point to be downloading all of those reports that you need to do your job manually downloading those each week, each month, whatever it might be.
+You can scale what you know to do. You have SOPs, you have systems, you have ways of doing things that you use to run Google accounts effectively.
+You can scale that up so that certain tasks, not everything, certain tasks can be done at scale automatically, every day, every hour, if you really want finding those search terms that are costing you too much money, suggesting new negative terms and so many more things because we can now add the power
+of intelligence to your automation. We'll get to that in a later video. Getting notified using scripts for alerts and automatic checks so that you can be proactively notified so that you don't have to go and check each one of your accounts or each one of your campaigns every day just to check that things
+are running okay. You can be notified as soon as something isn't running okay and you get to define what okay is what those limits are.
+Like I said, scripts can run every hour if you want. So if you need this thing running and letting you know as soon as a budget is hit or as soon as some new campaign spends over a critical amount or as soon as Google tries to spend double your daily budget or hits you with a keyword that costs you three
+, four times more than your target CPA. You can be notified about all of that stuff and build systems to take care of that to pause the keyword or the campaigning question to change budgets automatically.
+And we're going to dive into Google Sheets because this is really where all of your data is going to live outside of Google Ads.
+We're going to automate a bunch of stuff to pull data into Google Sheets, which means that just knowing a little bit about how to get the most out of Google Sheets can really help.
+And as you'll see, as we get into the videos, this can really be the main hub of all of your automation, not just for Google Ads, but we can actually start to build automation that can help with any other type of, well, as I was going say, any other type of marketing, Facebook ads or Shopify data, but
+really any data in your business, we can use this for, but just before we get into it, I do want to point out it is not a magic panacea.
+It's not silver bullet. There are going to be limitations. It isn't going to replace you. You don't need to worry about that, but it can't do everything.
+So it'll help us automate tasks, but it's not going to make those big strategic decisions. We can add the power of intelligence to help with some decision-making, but obviously AI being what it is at this point You're not going to trust that % to make certainly not big important decisions They're 
+not going to fix stuff just by running a script. They're going to tell you what is happening They can automate that we can alert you we can do all sorts of stuff, but they can't magically fix something that just isn't that good to start with.
+They can only run for minutes. So we have to be a little bit careful sometimes about what we actually put into a script.
+Most of the time this isn't gonna be a problem, but it is worth knowing that there is a limitation there.
+And they only work inside Google Ads, but I do have a couple of little tricks around that where we can work with other tools, even though those tools are not Google Ads.
+But most of the time we'll be working with Google Ads data and sending that data to a Google Sheet. We'll do a little bit more outside that.
+Now where I want to start is on my site, atiagent.com, you can go there right now and if you go into this, learn the basics section, I'm actually going to walk you through, for this first module, I'm going to walk you through the basics so that you get to sort of understand what scripts Canon can't
+do and exactly how to use them. starting at the really, really basic level of just this simple little script here which is just going to send a little hello message on the screen.
+Now, if you really want, you can work through here and read every single thing on here and tick these off as you go or we can just move a little bit faster and dive in here and hit that copy code button.
+And then it's telling us exactly what to do. So rather than read that out to you on the screen, I'm just going to jump straight into a Google ads account here.
+And I've gone into tools and scripts. And I've hit the big blue plus sign to start a new script. And we come in here and you'll do this almost every time you install the script.
+Almost every time you're going to be copying and pasting a script from somewhere else. It might be one of mine.
+It might be one of the many others that you're going to find online or it may be from an AI and you paste it from the AI into here.
+And so what I normally do is come into this main script canvas area and just control A to highlight everything and then delete what's there.
+So I've got a completely blank screen and then I'm going to paste in that script that we just copied to the clipboard.
+Now we could give it a name at this point, but what most people are going to do at this point is hit run and that's fine, it will run, but then you're going to have to click around a bit to find the messages that the scripts are giving you known as logs.
+So instead we're going to click the preview button because clicking the preview button enables us to see what's happening while the script is running.
+If we just come across into logs here, you can see that we see this log message. It's not doing anything.
+It's not changing the account. It's just showing how easy it is. If you copy and paste, you can use Google ads scripts.
+So that worked. We saw a message down the bottom. If we go back over to here, it's telling us exactly what to do.
+And we say, yep, I've run the code. Did you see this? Yes, that's exactly what we saw. Fantastic. Let the confetti begin and then we'll move to the next video of next level in the next video.

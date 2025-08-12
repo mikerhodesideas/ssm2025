@@ -1,0 +1,29 @@
+One of the ways we can get AI to make less mistakes is to give it access to documentation. In this case, the Google Script API documentation.
+So you can see here, I have pasted in the error that I got with the previous script. And then I've said down here, please read this.
+I'll show you that website in just a second. And then I've used a special keyword that Claude reserves, which is think hard.
+So you can use think hard, think harder, think hardest or ultra think, and that assigns more tokens to the AI's thinking period, which is sort of how long it thinks about stuff before it answers you.
+So in this case, I've said think hard. So it's gone off, read that documentation and then corrected the script. And then I did say this time, sort by impressions descending.
+And now it's given me this new script. I also added that impressions greater than and now it has output my search terms sorted with the right data.
+Now the documentation is from this website so if you search for developers.google.com and then or if you just search Google dev API scripts, something like that you'll find this.
+I'll also paste this URL next to the video on my circle on my site with this course material. So this is fantastic.
+I use this all the time. Back in the day, two, three years ago, whenever I first did scripts and sheets mastery, we would spend about an hour going through all of this to understand in great detail the documentation.
+But you don't need to do that. All you need to do is to know that it is here. So we were doing a script just before for search terms.
+So if we come into here, you'll see. So the latest version is version of the API. They change every four months or so ish.
+And there are two main types of resource, types of thing that we want to fetch. There are things with metrics and things without metrics.
+Most of the time you're probably beginning things with metrics, at least for now. So ad groups, you can see in here, asset groups.
+We were doing search terms, so I just scroll down here until I find something that looks right search term view Who knows but probably seems about right and then if we want we can come into here and read through all of this and try and Understand what all of this means or we can just Give this URL to
+our favorite AI and say hey, please read this I think it'll help you improve the script and that's exactly what I did You could, if you wanted to, come into here and you can build your own query, that SQL thing that we talked about before, select from where we can build this in here.
+This is what we used to do two, three years ago. I'd come into here and I'd find all of the stuff in here that I actually want, my actual search term, and then the metrics around that, maybe I wanted cost and clicks.
+and both impressions gone. It'll be sort of an alpha-order bike, right? And then this is filling out all of this stuff for me and then I could copy that and go paste it into the AI and say, hey, build a script for me using this query, using this SQL.
+But the AI is way smarter than it was a couple years ago. So instead of doing this, all we really need to do is to give it the URL of that previous page, this search term view page, have it read the documentation, and that will cause it to give us much, much better scripts first time.
+My last little note on the resources without metrics, you might be thinking what on earth doesn't have a metric. Well, there are lots of things in here, so assets, for example, if you want to get a report about all of your ads, ads are made up of individual assets.
+And all of the interesting detail about an asset is held in here. So, for example, if I scroll down to the text area, you can see that we've got text asset text, or we've got site link details, the actual description, the actual text itself of the site link.
+We've got mobile apps, we've got lead forms. The image assets, the URL of the image, the height, the width, the type of image asset.
+All of that is held in here, and all of that gets tied to an asset ID. Hmm, okay. So if I wanna pull a report about assets, I need to do two things.
+I need to go up to the resources with metrics and figure out which of these various asset reports I need, do I need asset groups, do I need asset group product groups, do I need asset field types, I don't know, I would probably give all of those if I didn't know to the AI and say, hey, you figure it 
+out because if it's a search campaign, it's going to be this thing. Add group, add asset view. If it's PMACs, then there'll be some stuff in asset groups.
+If it's shopping, it's probably going to be a group. But you can give a bunch of URLs to the AI and say, hey, I don't know, it's in there somewhere, you figure it out.
+The bit with the metrics is in So it's really weird, but I can understand it being a geek. I can understand why they do this, but if you're new to this it can be bloody confusing because in here you're going to get basically an ID and some metrics that go along with that asset ID.
+But if you want all of the detail about what that asset actually entails or the text that goes along with that asset, then that's all going to be hiding in this asset resource without metrics.
+So it's pretty confusing the first time you look at this. We're not quite at the point where you can say, hey, AI, just go to this overview page, visit here and visit all of the pages that are linked off here, please go read all pages in the documentation.
+We're not quite at that stage with AI yet, probably not far off. But for now, find the page that looks vaguely connected to the thing that you want, tell it to read that and any other related pages and that will usually get you most of the way I'll see you in the next video.
