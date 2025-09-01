@@ -52,11 +52,11 @@ When working with Google Ads API data, follow these critical practices:
    - Correct: `row.metrics.impressions`
    - Incorrect: `row['metrics.impressions']` or `row.metrics['impressions']`
 2. ALWAYS convert metric values to numbers using Number():
-   - `const impressions = Number(row.metrics.impressions)`
+   - `const impressions = row.metrics ? Number(row.metrics.impressions) || 0 : 0`
    - This applies to ALL metrics (impressions, clicks, cost_micros, conversions, etc.)
 3. Handle null/undefined values with fallbacks:
-   - `const impressions = Number(row.metrics.impressions) || 0`
-   - This prevents NaN errors in calculations
+   - `const impressions = row.metrics ? Number(row.metrics.impressions) || 0 : 0`
+   - This prevents NaN errors in calculations and handles missing metrics objects
 4. Validate data structure before processing:
    - Log the first row structure to verify field access patterns
    - Check that metrics exist and have expected formats
