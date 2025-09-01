@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mv:*)"
+      "Bash(mv:*)",
+      "Bash(chmod:*)",
+      "Bash(./.claude/commands/gen-ads-script:*)"
     ],
     "deny": [],
     "ask": []
